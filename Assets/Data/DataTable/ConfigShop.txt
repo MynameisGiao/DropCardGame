@@ -1,0 +1,7 @@
+id	name	image	price	value	shop_type
+1	Tiny Gold	S_001	0.99$	100	1
+2	Small Gold	S_002	2.99$	350	1
+3	Big Gold	S_003	5.99$	700	1
+4	Tiny Ammo	S_004	1.99$	100	2
+5	SmallAmmo	S_005	4.99$	550	2
+6	Big Ammo	S_006	9.99$	1200	2

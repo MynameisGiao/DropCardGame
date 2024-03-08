@@ -1,0 +1,16 @@
+id	name	prefab	rare	stamina	cool_down	skill
+1	Nolan	U_001	1	3	3	No Weapon
+2	Jack	U_002	1	3	3	BowAndArrow
+3	Anselm	U_003	1	3	4	DoubleSword
+4	Darius	U_004	1	3	4	MagicWand
+5	Egan	U_005	1	3	4	SingleTwoHandSword
+6	Bomer	U_006	2	5	5	No Weapon
+7	Rick	U_007	2	5	5	BowAndArrow
+8	Virsa	U_008	2	5	6	SwordShield
+9	John	U_009	2	5	6	DoubleSword
+10	Edward	U_010	2	5	6	MagicWand
+11	Vivian	U_011	2	5	6	SingleTwoHandSword
+12	Grainne	U_012	3	6	6	SwordShield
+13	Galvin	U_013	3	6	7	BowAndArrow
+14	Bomer	U_014	3	6	7	DoubleSword
+15	Helga	U_015	3	6	7	SwordShield

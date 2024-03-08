@@ -12,7 +12,7 @@ public class LoadSceneManager : BYSingletonMono<LoadSceneManager>
     public GameObject ui_object;
     public Image image_progress;
     public TMP_Text progress_lb;
-
+    public float time_delay = 0.05f;
     public void LoadSceneByName(string scene_name, Action callback)
     {
         StartCoroutine(LoadSceneByNameProgress(scene_name, callback));
@@ -23,7 +23,7 @@ public class LoadSceneManager : BYSingletonMono<LoadSceneManager>
             ui_object.SetActive(true);
             // xử lý bất đồng bộ
             AsyncOperation async = SceneManager.LoadSceneAsync(scene_name, LoadSceneMode.Single);
-            WaitForSeconds wait_s = new WaitForSeconds(0.1f);
+            WaitForSeconds wait_s = new WaitForSeconds(time_delay);
             int count = 0;
             while (count <= 100)
             {
@@ -53,7 +53,7 @@ public class LoadSceneManager : BYSingletonMono<LoadSceneManager>
             ui_object.SetActive(true);
             // xử lý bất đồng bộ
             AsyncOperation async = SceneManager.LoadSceneAsync(scene_index, LoadSceneMode.Single);
-            WaitForSeconds wait_s = new WaitForSeconds(0.1f);
+            WaitForSeconds wait_s = new WaitForSeconds(time_delay);
             int count = 0;
             while (count <= 100)
             {

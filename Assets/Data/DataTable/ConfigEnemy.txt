@@ -1,0 +1,16 @@
+id	name	prefab	damage	hp	attack_rate
+1	Archer_1	E_001	3	15	3
+2	Archer_2	E_002	3	15	3
+3	Crossbow_1	E_003	4	17	3
+4	Crossbow_2	E_004	4	17	3
+5	Infantry_1	E_005	5	20	2
+6	Infantry_2	E_006	6	20	2
+7	Spearman	E_007	5	20	2
+8	Twohandle	E_008	5	20	2
+9	Cavalry_1	E_009	6	24	3
+10	Cavalry_2	E_010	6	24	3
+11	Cavalry_Spear	E_011	6	24	3
+12	Catapult	E_012	7	25	4
+13	Ram	E_013	7	25	4
+14	Orc	E_014	12	30	7
+
