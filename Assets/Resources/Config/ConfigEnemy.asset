@@ -12,4 +12,88 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 626854eb7c9895e488e20eed1069485c, type: 3}
   m_Name: ConfigEnemy
   m_EditorClassIdentifier: 
-  records: []
+  records:
+  - id: 1
+    name: Archer_1
+    prefab: E_001
+    damage: 3
+    hp: 15
+    attack_rate: 3
+  - id: 2
+    name: Archer_2
+    prefab: E_002
+    damage: 3
+    hp: 15
+    attack_rate: 3
+  - id: 3
+    name: Crossbow_1
+    prefab: E_003
+    damage: 4
+    hp: 17
+    attack_rate: 3
+  - id: 4
+    name: Crossbow_2
+    prefab: E_004
+    damage: 4
+    hp: 17
+    attack_rate: 3
+  - id: 5
+    name: Infantry_1
+    prefab: E_005
+    damage: 5
+    hp: 20
+    attack_rate: 2
+  - id: 6
+    name: Infantry_2
+    prefab: E_006
+    damage: 6
+    hp: 20
+    attack_rate: 2
+  - id: 7
+    name: Spearman
+    prefab: E_007
+    damage: 5
+    hp: 20
+    attack_rate: 2
+  - id: 8
+    name: Twohandle
+    prefab: E_008
+    damage: 5
+    hp: 20
+    attack_rate: 2
+  - id: 9
+    name: Cavalry_1
+    prefab: E_009
+    damage: 6
+    hp: 24
+    attack_rate: 3
+  - id: 10
+    name: Cavalry_2
+    prefab: E_010
+    damage: 6
+    hp: 24
+    attack_rate: 3
+  - id: 11
+    name: Cavalry_Spear
+    prefab: E_011
+    damage: 6
+    hp: 24
+    attack_rate: 3
+  - id: 12
+    name: Catapult
+    prefab: E_012
+    damage: 7
+    hp: 25
+    attack_rate: 4
+  - id: 13
+    name: Ram
+    prefab: E_013
+    damage: 7
+    hp: 25
+    attack_rate: 4
+  - id: 14
+    name: Orc
+    prefab: E_014
+    damage: 12
+    hp: 30
+    attack_rate: 7

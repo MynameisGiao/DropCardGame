@@ -1,18 +1,30 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class ConfigShop : BYDataTable
+[Serializable]
+public class ConfigShopRecord
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    // id   name    prefab  damage  hp
+    [SerializeField]
+    private int id;
+    [SerializeField]
+    private string name;
+    [SerializeField]
+    private string prefab;
+    [SerializeField]
+    private int damage;
+    [SerializeField]
+    private int hp;
+    [SerializeField]
+    private int attack_rate;
 
-    // Update is called once per frame
-    void Update()
+}
+public class ConfigShop : BYDataTable<ConfigShopRecord>
+{
+    public override ConfigCompare<ConfigShopRecord> DefindCompare()
     {
-        
+        configCompare = new ConfigCompare<ConfigShopRecord>("id");
+        return configCompare;
     }
 }

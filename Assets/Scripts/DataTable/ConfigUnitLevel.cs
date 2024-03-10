@@ -1,18 +1,31 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConfigUnitLevel : BYDataTable
+[Serializable]
+public class ConfigUnitLevelRecord
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    // id   name    prefab  damage  hp
+    [SerializeField]
+    private int id;
+    [SerializeField]
+    private string name;
+    [SerializeField]
+    private string prefab;
+    [SerializeField]
+    private int damage;
+    [SerializeField]
+    private int hp;
+    [SerializeField]
+    private int attack_rate;
 
-    // Update is called once per frame
-    void Update()
+}
+public class ConfigUnitLevel : BYDataTable<ConfigUnitLevelRecord>
+{
+    public override ConfigCompare<ConfigUnitLevelRecord> DefindCompare()
     {
-        
+        configCompare = new ConfigCompare<ConfigUnitLevelRecord>("id");
+        return configCompare;
     }
 }

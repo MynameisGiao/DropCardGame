@@ -6,7 +6,9 @@ public class HomeView : BaseView
 {
     public override void Setup(ViewParam param)
     {
-        base.Setup(param);  
+        base.Setup(param);
+        ConfigEnemyRecord cf_mission = ConfigManager.instance.configEnemy.records[0];
+        Debug.LogError("Homeview " + cf_mission.Name);
 
     }
     public void ShowMissionView()

@@ -9,25 +9,22 @@ public class CameraControl : MonoBehaviour
     public Transform limit_right;
     public Transform trans_cam;
     private float pos_x;
-    public float sensity = 1;
-    public float speed;
+    public float sensity = 0.03f;
+    public float speed =15;
     private void Awake()
     {
 
     }
-    // Start is called before the first frame update
     void Start()
     {
         // trans = transform;
     }
 
-    // Update is called once per frames
     void Update()
     {
     }
     private void LateUpdate()
     {
-        // trans.position = character_trans.position;
         Vector3 delta_move = InputManager.delta_mouse;
         pos_x = trans_cam.localPosition.x;
         pos_x = Mathf.Lerp(pos_x, pos_x - delta_move.x * sensity, Time.deltaTime * speed);

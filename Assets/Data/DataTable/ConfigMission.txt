@@ -1,7 +1,8 @@
-id	stage	name	description	sceneName	waves	reward
-1	1	Survival	Survival	Ingame_01	"1;2;3"	50
-2	1	Left 4 dead	Left 4 dead	Ingame_02	"2;2;3;3"	55
-3	1	Kill shot	Kill shot	Ingame_01	"1;2;3;4"	60
-4	2	Industry	Industry	Ingame_02	"2;3;4;4"	65
-5	2	Nuclear	Nuclear	Ingame_01	"1;3;4;4;5"	70
-6	2	last day on Earth	last day on Earth	Ingame_02	"3;4;5;6"	75
+id	stage	name	sceneName	waves	reward1	reward2
+1	1	attack the citadel_1	Ingame_01	1;2;3	50	50
+2	2	attack the citadel_2	Ingame_01	2;2;3;3	55	55
+3	3	attack the citadel_3	Ingame_02	1;2;3;4	60	60
+4	4	attack the citadel_4	Ingame_02	2;3;4;4	65	65
+5	5	inside the citadel_1	Ingame_03	1;3;4;4;5	70	70
+6	6	inside the citadel_2	Ingame_03	3;4;5;6	75	75
+7	7	Orc Attack	Ingame_04	3;4;5;7	100	100

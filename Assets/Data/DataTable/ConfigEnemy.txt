@@ -13,4 +13,3 @@ id	name	prefab	damage	hp	attack_rate
 12	Catapult	E_012	7	25	4
 13	Ram	E_013	7	25	4
 14	Orc	E_014	12	30	7
-
