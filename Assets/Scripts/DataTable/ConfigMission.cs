@@ -47,13 +47,20 @@ public class ConfigMissionRecord
     }
     [SerializeField]
     private string waves;
-     public string Waves
+     public List<int> Waves
     {
         get
         {
-            return waves;
+            string[] s = waves.Split(';');
+            List<int> ls = new List<int>();
+            foreach (string e in s)
+            {
+                ls.Add(int.Parse(e));
+            }
+            return ls;
         }
     }
+    
     [SerializeField]
     private int reward_1;
     public int Reward_1
@@ -77,7 +84,7 @@ public class ConfigMission : BYDataTable<ConfigMissionRecord>
 {
     public override ConfigCompare<ConfigMissionRecord> DefindCompare()
     {
-        configCompare=new ConfigCompare<ConfigMissionRecord>("id","stage");
+        configCompare=new ConfigCompare<ConfigMissionRecord>("id");
         return configCompare;
     }
 }

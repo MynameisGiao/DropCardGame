@@ -94,6 +94,6 @@ MonoBehaviour:
   - id: 14
     name: Orc
     prefab: E_014
-    damage: 12
-    hp: 30
-    attack_rate: 7
+    damage: 15
+    hp: 50
+    attack_rate: 5

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -53,5 +53,18 @@ public class ViewManager : BYSingletonMono<ViewManager>
         };
         cur_view.SendMessage("ShowView", (object)cb, SendMessageOptions.RequireReceiver);
       
+    }
+    // Thêm hàm GetView để lấy BaseView từ Dictionary
+    public BaseView GetView(ViewIndex viewIndex)
+    {
+        if (dic_View.ContainsKey(viewIndex))
+        {
+            return dic_View[viewIndex];
+        }
+        else
+        {
+            Debug.LogError("ViewIndex " + viewIndex.ToString() + " is not registered in ViewManager.");
+            return null;
+        }
     }
 }

@@ -13,4 +13,14 @@ public class MissionView : BaseView
     {
         ViewManager.instance.SwitchView(ViewIndex.HomeView);
     }
+    public void OnPlayMission(int id)
+    {
+        ConfigMissionRecord cf_mission =ConfigManager.instance.configMission.GetRecordByKeySearch(id);
+        GameManager.instance.cur_cf_mission = cf_mission;
+        Debug.LogError("Scene name: " + cf_mission.SceneName);
+        LoadSceneManager.instance.LoadSceneByName(cf_mission.SceneName, () =>
+        {
+            ViewManager.instance.SwitchView(ViewIndex.IngameView);
+        });
+    }
 }

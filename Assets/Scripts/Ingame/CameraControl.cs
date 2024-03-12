@@ -9,7 +9,7 @@ public class CameraControl : MonoBehaviour
     public Transform limit_right;
     public Transform trans_cam;
     private float pos_x;
-    public float sensity = 0.03f;
+    public float sensity = 0.1f;
     public float speed =15;
     private void Awake()
     {

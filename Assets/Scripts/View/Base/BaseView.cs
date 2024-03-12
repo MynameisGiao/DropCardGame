@@ -21,7 +21,9 @@ public class BaseView : MonoBehaviour
         viewAnimation.OnHideAnimation(() =>
         {
             gameObject.SetActive(false);
+            OnHideView();
             callback?.Invoke();
+           
         });
        
     }
@@ -30,8 +32,23 @@ public class BaseView : MonoBehaviour
         viewAnimation.OnShowAnimation(() =>
         {
             Action callback = (Action)val;
+            OnShowView();
             callback?.Invoke();
+           
         });
        
+    }
+    public virtual void OnShowView()
+    {
+
+    }
+    public virtual void OnHideView()
+    {
+
+    }
+
+    internal void OnWaveChange(int arg1, int arg2)
+    {
+        throw new NotImplementedException();
     }
 }

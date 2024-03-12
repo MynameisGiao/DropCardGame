@@ -4,15 +4,14 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using UnityEngine;
-using UnityEngine.Profiling;
+using UnityEngine.U2D;
 
-public class BYDataImport:ScriptableObject
+public class BYDataImport : ScriptableObject
 {
     public virtual void CreateBinaryFile(TextAsset csv_file)
-    { 
-    
-    }
+    {
 
+    }
 }
 public class ConfigCompare<T> : IComparer<T> where T : class, new()
 {
@@ -62,9 +61,9 @@ public abstract class BYDataTable<T> : BYDataImport where T : class, new()
     public override void CreateBinaryFile(TextAsset csv_file)
     {
         base.CreateBinaryFile(csv_file);
-        List<List<string>> grid= SplitCSVFile(csv_file);
-        Type record_type= typeof(T);
-        FieldInfo[] fieldInfos = record_type.GetFields(BindingFlags.NonPublic| BindingFlags.Public| BindingFlags.Instance);
+        List<List<string>> grid = SplitCSVFile(csv_file);
+        Type record_type = typeof(T);
+        FieldInfo[] fieldInfos = record_type.GetFields(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
         for (int i = 1; i < grid.Count; i++)
         {
             List<string> line_data = grid[i];
@@ -80,7 +79,6 @@ public abstract class BYDataTable<T> : BYDataImport where T : class, new()
                     {
                         if (line_data[f] != string.Empty)
                         {
-
                             data_field = line_data[f];
                         }
                     }
@@ -101,39 +99,39 @@ public abstract class BYDataTable<T> : BYDataImport where T : class, new()
 
             }
             jsontext += "}";
+            //Debug.LogError(jsontext);
             T r = JsonUtility.FromJson<T>(jsontext);
-             records.Add(r);
+            records.Add(r);
         }
         records.Sort(configCompare);
-         // records.BinarySearch();
+        // records.BinarySearch();
 
     }
-
     private List<List<string>> SplitCSVFile(TextAsset csvText)
     {
-        List<List<string>> grid= new List<List<string>>();
-        string[] lines= csvText.text.Split('\n');
-        for(int i=0; i<lines.Length;i++)
+        List<List<string>> grid = new List<List<string>>();
+        string[] lines = csvText.text.Split('\n'); ;
+        for (int i = 0; i < lines.Length; i++)
         {
             string s = lines[i];
-            if(s.CompareTo(string.Empty) != 0)
+            if (s.CompareTo(string.Empty) != 0)
             {
-                string[] line_data=s.Split('\t');
+                string[] line_data = s.Split('\t');
                 List<string> ls_line = new List<string>();
                 foreach (string e in line_data)
                 {
                     string new_char = Regex.Replace(e, @"\t|\n|\r", "");
-                    new_char = Regex.Replace(new_char, @"""", ""+ "");
-                    ls_line.Add(e);
+                    new_char = Regex.Replace(new_char, @"""", "" + "");
+                    ls_line.Add(new_char);
                 }
                 grid.Add(ls_line);
+
             }
-          
         }
+
         return grid;
     }
-
-    public T GetRecordBykeySearch(params object[] values)
+    public T GetRecordByKeySearch(params object[] values)
     {
         T obj_key = configCompare.SetValueSearch(values);
         int index = records.BinarySearch(obj_key, configCompare);
@@ -143,5 +141,4 @@ public abstract class BYDataTable<T> : BYDataImport where T : class, new()
         else
             return null;
     }
-
 }
