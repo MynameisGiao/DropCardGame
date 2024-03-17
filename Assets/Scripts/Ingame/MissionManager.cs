@@ -57,6 +57,8 @@ public class MissionManager : BYSingletonMono<MissionManager>
         count_enemy_create++;
         ConfigEnemyRecord cf_enemy=ConfigManager.instance.configEnemy.GetRecordByKeySearch(id);
         GameObject e_obj = Instantiate(Resources.Load("Enemy/"+cf_enemy.Prefab,typeof(GameObject))) as GameObject;
+        Transform pos_trans = ConfigScene.instance.GetEnemySpawnPoint();
+        e_obj.transform.position = pos_trans.position;
     }
     public void EnemyDead(EnemyControl e)
     {

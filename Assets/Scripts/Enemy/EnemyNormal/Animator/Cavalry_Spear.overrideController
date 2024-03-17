@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Cavalry_Spear
+  m_Controller: {fileID: 9100000, guid: b52079f2fa1db4347a696f481819ccf9, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 0527e149cc2c97f4d8400a454a21e9d6, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 679722b7761318d4ba117deb8e2f6875, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: aabc35eaaa658c747ba58b7ede30f77c, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: f2b721309994f7c46a591ef7211e525f, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 57f4b6d8e4aaa67469ac9e22f15acb33, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 2afc493d6390a174893669952965c2c5, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 2f2a39086989dc44b8d626d1c663ed0d, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: aa6cdda78d38703469f148b320e00cf3, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: a70ccc875bd2f254293e91baaad644f9, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: b98b361f35216e243bfa249220db4bd4, type: 3}
