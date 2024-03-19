@@ -1,18 +1,32 @@
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Orc_AttackBaseState : MonoBehaviour
+[Serializable]
+public class Orc_AttackBaseState :  FSM_State
 {
-    // Start is called before the first frame update
-    void Start()
+    [NonSerialized]
+    public OrcControl parent;
+    public override void Enter()
     {
-        
+        base.Enter();
+    }
+    public override void FixedUpdate()
+    {
+        base.FixedUpdate();
+        if (parent.time_attack >= parent.cf.Attack_rate)
+        {
+            parent.dataBinding.Attack = true;
+            parent.time_attack = 0;
+        }
+    }
+    public override void OnAnimMiddle()
+    {
+        base.OnAnimMiddle();
+        Debug.LogError("Attack base!");
+
+        // base chịu damage
+        MissionManager.instance.OnDamage(parent.damageData);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

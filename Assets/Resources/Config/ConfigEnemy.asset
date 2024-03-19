@@ -80,18 +80,6 @@ MonoBehaviour:
     hp: 24
     attack_rate: 3
   - id: 12
-    name: Catapult
-    prefab: E_012
-    damage: 7
-    hp: 25
-    attack_rate: 4
-  - id: 13
-    name: Ram
-    prefab: E_013
-    damage: 7
-    hp: 25
-    attack_rate: 4
-  - id: 14
     name: Orc
     prefab: E_014
     damage: 15

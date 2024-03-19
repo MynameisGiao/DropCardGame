@@ -53,8 +53,8 @@ public class ConfigEnemyRecord
         }
     }
     [SerializeField]
-    private int attack_rate;
-    public int Attack_rate
+    private float attack_rate;
+    public float Attack_rate
     {
         get
         {

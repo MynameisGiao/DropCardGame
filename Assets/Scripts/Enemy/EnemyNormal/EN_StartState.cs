@@ -1,18 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[Serializable]
 
-public class EN_StartState : MonoBehaviour
+public class EN_StartState :   FSM_State
 {
-    // Start is called before the first frame update
-    void Start()
+    [NonSerialized]
+    public EnemyNormalControl parent;
+    public override void Enter()
     {
-        
+        base.Enter();
+        parent.dataBinding.StartStates = true;
+       
     }
-
-    // Update is called once per frame
-    void Update()
+    public override void OnAnimMiddle()
     {
-        
+        base.OnAnimMiddle();
+        parent.GotoState(parent.moveState);
     }
 }

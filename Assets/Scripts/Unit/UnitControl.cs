@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MachineControl : MonoBehaviour
+public class UnitControl : MonoBehaviour
 {
-    public MachineDataBinding dataBinding;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,5 +14,9 @@ public class MachineControl : MonoBehaviour
     void Update()
     {
         
+    }
+    public virtual void OnDamage(DamageData data)
+    {
+        Destroy(gameObject);
     }
 }

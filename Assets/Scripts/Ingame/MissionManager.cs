@@ -59,6 +59,9 @@ public class MissionManager : BYSingletonMono<MissionManager>
         GameObject e_obj = Instantiate(Resources.Load("Enemy/"+cf_enemy.Prefab,typeof(GameObject))) as GameObject;
         Transform pos_trans = ConfigScene.instance.GetEnemySpawnPoint();
         e_obj.transform.position = pos_trans.position;
+        e_obj.transform.forward = pos_trans.forward;
+        EnemyControl enemyControl= e_obj.GetComponent<EnemyControl>();
+        enemyControl.Setup(new EnemyInitData { cf = cf_enemy });
     }
     public void EnemyDead(EnemyControl e)
     {
@@ -82,4 +85,9 @@ public class MissionManager : BYSingletonMono<MissionManager>
         StartCoroutine(Start());
     }
 
+    // base chịu damageData từ enemy
+    public void OnDamage(DamageData damageData)
+    {
+        Debug.LogError(" Enemy attack base: " + damageData.damage);
+    }
 }

@@ -1,18 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Orc_DeadState : MonoBehaviour
+[Serializable]
+public class Orc_DeadState : FSM_State
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [NonSerialized]
+    public OrcControl parent;
 }
