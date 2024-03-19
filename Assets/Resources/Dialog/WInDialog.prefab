@@ -1333,7 +1333,7 @@ GameObject:
   - component: {fileID: 5595324300661620374}
   - component: {fileID: 5853755610433235804}
   m_Layer: 0
-  m_Name: WInDialog
+  m_Name: WinDialog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

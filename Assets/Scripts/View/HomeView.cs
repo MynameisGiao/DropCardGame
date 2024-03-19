@@ -7,6 +7,7 @@ public class HomeView : BaseView
     public override void Setup(ViewParam param)
     {
         base.Setup(param);
+        DataController.instance.CreateMissionData();
     }
     public void ShowMissionView()
     {
@@ -21,4 +22,5 @@ public class HomeView : BaseView
         ViewManager.instance.SwitchView(ViewIndex.ShopView);
 
     }
+    
 }

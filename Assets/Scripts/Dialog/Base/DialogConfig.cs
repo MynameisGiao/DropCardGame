@@ -7,7 +7,8 @@ public enum DialogIndex
     PauseDialog=1,
     WinDialog=2,
     FailDialog=3,
-    SettingDialog=4
+    SettingDialog=4,
+    RenameDialog=5
 }
 public class DialogParam
 {
@@ -29,5 +30,6 @@ public class DialogConfig
       DialogIndex.WinDialog,
       DialogIndex.FailDialog,
       DialogIndex.SettingDialog,
+      DialogIndex.RenameDialog,
     };
 }
