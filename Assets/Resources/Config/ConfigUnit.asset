@@ -12,3 +12,109 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d66bbda30f6ec4ab8acb390b4e9ec0, type: 3}
   m_Name: ConfigUnit
   m_EditorClassIdentifier: 
+  records:
+  - id: 1
+    name: Nolan
+    prefab: U_001
+    rare: 1
+    stamina: 3
+    cool_down: 3
+    skill: No Weapon
+  - id: 2
+    name: Jack
+    prefab: U_002
+    rare: 1
+    stamina: 3
+    cool_down: 3
+    skill: BowAndArrow
+  - id: 3
+    name: Anselm
+    prefab: U_003
+    rare: 1
+    stamina: 3
+    cool_down: 4
+    skill: DoubleSword
+  - id: 4
+    name: Darius
+    prefab: U_004
+    rare: 1
+    stamina: 3
+    cool_down: 4
+    skill: MagicWand
+  - id: 5
+    name: Egan
+    prefab: U_005
+    rare: 1
+    stamina: 3
+    cool_down: 4
+    skill: SingleTwoHandSword
+  - id: 6
+    name: Bomer
+    prefab: U_006
+    rare: 2
+    stamina: 5
+    cool_down: 5
+    skill: No Weapon
+  - id: 7
+    name: Rick
+    prefab: U_007
+    rare: 2
+    stamina: 5
+    cool_down: 5
+    skill: BowAndArrow
+  - id: 8
+    name: Virsa
+    prefab: U_008
+    rare: 2
+    stamina: 5
+    cool_down: 6
+    skill: SwordShield
+  - id: 9
+    name: John
+    prefab: U_009
+    rare: 2
+    stamina: 5
+    cool_down: 6
+    skill: DoubleSword
+  - id: 10
+    name: Edward
+    prefab: U_010
+    rare: 2
+    stamina: 5
+    cool_down: 6
+    skill: MagicWand
+  - id: 11
+    name: Vivian
+    prefab: U_011
+    rare: 2
+    stamina: 5
+    cool_down: 6
+    skill: SingleTwoHandSword
+  - id: 12
+    name: Grainne
+    prefab: U_012
+    rare: 3
+    stamina: 7
+    cool_down: 7
+    skill: SwordShield
+  - id: 13
+    name: Galvin
+    prefab: U_013
+    rare: 3
+    stamina: 7
+    cool_down: 7
+    skill: BowAndArrow
+  - id: 14
+    name: Bomer
+    prefab: U_014
+    rare: 3
+    stamina: 7
+    cool_down: 7
+    skill: DoubleSword
+  - id: 15
+    name: Helga
+    prefab: U_015
+    rare: 3
+    stamina: 7
+    cool_down: 7
+    skill: SwordShield

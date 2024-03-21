@@ -5,20 +5,62 @@ using UnityEngine;
 [Serializable]
 public class ConfigShopRecord
 {
-    // id   name    prefab  damage  hp
+   // id name    image price   value shop_type
+
     [SerializeField]
     private int id;
+    public int ID
+    {
+        get
+        {
+            return id;
+        }
+    }
     [SerializeField]
     private string name;
+    public string Name
+    {
+        get
+        {
+            return name;
+        }
+    }
     [SerializeField]
-    private string prefab;
+    private string image;
+    public string Image
+    {
+        get
+        {
+            return image;
+        }
+    }
     [SerializeField]
-    private int damage;
+    private int price;
+    public int Price
+    {
+        get
+        {
+            return price;
+        }
+    }
     [SerializeField]
-    private int hp;
+    private int value;
+    public int Value
+    {
+        get
+        {
+            return value;
+        }
+    }
     [SerializeField]
-    private int attack_rate;
-
+    private int shop_type;
+    public int Shop_type
+    {
+        get
+        {
+            return shop_type;
+        }
+    }
 }
 public class ConfigShop : BYDataTable<ConfigShopRecord>
 {

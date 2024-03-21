@@ -385,6 +385,8 @@ MonoBehaviour:
   configEnemy: {fileID: 0}
   configMission: {fileID: 0}
   configWave: {fileID: 0}
+  configShop: {fileID: 0}
+  configUnit: {fileID: 0}
 --- !u!1 &269853179
 GameObject:
   m_ObjectHideFlags: 0
@@ -791,6 +793,7 @@ Transform:
   - {fileID: 266493837}
   - {fileID: 1908037671}
   - {fileID: 31601940}
+  - {fileID: 1175557000}
   - {fileID: 1612315178}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1255,7 +1258,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 570004074}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1994895537}
+        m_TargetAssemblyTypeName: TopBarControl, Assembly-CSharp
+        m_MethodName: AddGoldGem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &953407635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1645,6 +1660,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140903649}
   m_CullTransparentMesh: 1
+--- !u!1 &1175556999
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1175557000}
+  - component: {fileID: 1175557001}
+  m_Layer: 0
+  m_Name: SpriteLibControl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1175557000
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175556999}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 490956870}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1175557001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175556999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d97c9ed2fbfa974099139dc30bb6d6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 128c8a91fb434a445b9b21e01503b904, type: 3}
+  - {fileID: 21300000, guid: 481a83eea45034b42a71554b53d11c80, type: 3}
+  - {fileID: 21300000, guid: 6b33a2db6f63fea4fb7d746cf3d98fdc, type: 3}
+  - {fileID: 21300000, guid: d696030b35224fa4eadadf36072dc398, type: 3}
+  - {fileID: 21300000, guid: 6c8172993b3df19409832f78d14d3184, type: 3}
+  - {fileID: 21300000, guid: 9dfcea411b1f7d34d86a2f93ae0332f9, type: 3}
 --- !u!1 &1219744635
 GameObject:
   m_ObjectHideFlags: 0
@@ -2159,7 +2225,7 @@ GameObject:
   - component: {fileID: 1675289747}
   - component: {fileID: 1675289746}
   m_Layer: 5
-  m_Name: coin_lb
+  m_Name: gold_lb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2561,7 +2627,7 @@ MonoBehaviour:
   parent: {fileID: 1828222855}
   name_lb: {fileID: 4883454792510793982}
   level_lb: {fileID: 4883454792754737651}
-  coin_lb: {fileID: 1675289746}
+  gold_lb: {fileID: 1675289746}
   gem_lb: {fileID: 576976244473557069}
 --- !u!1 &2066527884
 GameObject:
@@ -3694,7 +3760,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8251026365647046421}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1994895537}
+        m_TargetAssemblyTypeName: TopBarControl, Assembly-CSharp
+        m_MethodName: AddGoldGem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8251026365693039268
 MonoBehaviour:
   m_ObjectHideFlags: 0

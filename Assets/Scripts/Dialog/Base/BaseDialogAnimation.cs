@@ -4,14 +4,15 @@ using UnityEngine;
 using DG.Tweening;
 using System;
 
-[RequireComponent(typeof(CanvasGroup))]
+//[RequireComponent(typeof(CanvasGroup))]
 public class BaseDialogAnimation : MonoBehaviour
 {
     private CanvasGroup canvas_group;
     private void Awake()
     {
         canvas_group = gameObject.GetComponent<CanvasGroup>();
-        canvas_group.alpha = 0;
+        if (canvas_group != null)
+            canvas_group.alpha = 0;
     }
    
     public virtual void OnHideAnimation(Action callback)

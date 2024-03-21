@@ -8,6 +8,8 @@ public class ConfigManager : BYSingletonMono<ConfigManager>
     public ConfigEnemy configEnemy;
     public ConfigMission configMission;
     public ConfigWave configWave;
+    public ConfigShop configShop;
+    public ConfigUnit configUnit;
     public void InitConfig(Action callback)
     {
         StartCoroutine(ProgressLoadConfig(callback));
@@ -22,6 +24,12 @@ public class ConfigManager : BYSingletonMono<ConfigManager>
 
         configWave = Resources.Load("Config/ConfigWave", typeof(ScriptableObject)) as ConfigWave;
         yield return new WaitUntil(() => configWave != null);
+
+        configShop = Resources.Load("Config/ConfigShop", typeof(ScriptableObject)) as ConfigShop;
+        yield return new WaitUntil(() => configShop != null);
+
+        configUnit = Resources.Load("Config/ConfigUnit", typeof(ScriptableObject)) as ConfigUnit;
+        yield return new WaitUntil(() => configUnit != null);
 
         if (callback != null)
         {

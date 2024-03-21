@@ -31,7 +31,7 @@ public static class DataTrigger
             dicOnvaluaChange[path].RemoveListener(delegateValueChange);
         }
     }
-    public static void TrggerEventData(this object data, string path)
+    public static void TriggerEventData(this object data, string path)
     {
         if (dicOnvaluaChange.ContainsKey(path))
         {
@@ -44,7 +44,8 @@ public class DataModel : MonoBehaviour
 {
     private PlayerData playerData;
     public List<UnitData> deck;
-  
+    public static bool check ;
+
     public void InitData(Action callback)
     {
         if (!LoadData())
@@ -70,15 +71,17 @@ public class DataModel : MonoBehaviour
             PlayerMissionData missionData = new PlayerMissionData();
             missionData.cur_mission = 1;
             playerData.mission_data = missionData;
+
+            check = false;
             SaveData();
             callback();
         }
         else
         {
+            check = true;
             callback();
         }
     }
-
     public void CreateDataMission()
     {
         PlayerMissionData missionData = new PlayerMissionData();
@@ -149,7 +152,7 @@ public class DataModel : MonoBehaviour
             {
                 s_path = s_path + "/" + paths[i];
             }
-            dataChange[i].TrggerEventData(s_path);
+            dataChange[i].TriggerEventData(s_path);
         }
         SaveData();
     }
@@ -180,16 +183,13 @@ public class DataModel : MonoBehaviour
         object dataReturn = UpdateDicDataByPath<T>(paths, key, playerData, dataNew, callback);
         paths.Clear();
         SaveData();
-        dataReturn.TrggerEventData(path);
-        dataNew.TrggerEventData(path + "/" + key);
+        dataReturn.TriggerEventData(path);
+        dataNew.TriggerEventData(path + "/" + key);
     }
     private object UpdateDicDataByPath<T>(List<string> paths, string key, object data, T dataNew, Action callback = null)
     {
         object dataReturn = null;
-        // 1-> inventory
-        //2 -> gold
         string p = paths[0];
-        // data<=> playerData
         Type t = data.GetType();
         FieldInfo field = t.GetField(p);
         if (paths.Count == 1)

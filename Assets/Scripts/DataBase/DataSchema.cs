@@ -6,10 +6,11 @@ using UnityEngine;
 public class DataSchema
 {
     public const string INFO = "info";
+    public const string NAME = "info/nickname";
     public const string INVENTORY = "inventory";
     public const string GOLD = "inventory/gold";
-    public const string GEM = "inventory/gem";
-    public const string NAME = "info/nickname";
+    public const string GEM = "inventory/gem";   
+    public const string DIC_UNIT = "info/dic_unit";
 }
 [Serializable]
 public class PlayerData

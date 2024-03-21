@@ -10,7 +10,7 @@ id	name	prefab	rare	stamina	cool_down	skill
 9	John	U_009	2	5	6	DoubleSword
 10	Edward	U_010	2	5	6	MagicWand
 11	Vivian	U_011	2	5	6	SingleTwoHandSword
-12	Grainne	U_012	3	6	6	SwordShield
-13	Galvin	U_013	3	6	7	BowAndArrow
-14	Bomer	U_014	3	6	7	DoubleSword
-15	Helga	U_015	3	6	7	SwordShield
+12	Grainne	U_012	3	7	7	SwordShield
+13	Galvin	U_013	3	7	7	BowAndArrow
+14	Bomer	U_014	3	7	7	DoubleSword
+15	Helga	U_015	3	7	7	SwordShield

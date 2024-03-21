@@ -4,14 +4,15 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-[RequireComponent(typeof(CanvasGroup))]
+//[RequireComponent(typeof(CanvasGroup))]
 public class BaseViewAnimation : MonoBehaviour
 {
     private CanvasGroup canvasGroup;
     private void Awake()
     {
         canvasGroup = gameObject.GetComponent<CanvasGroup>();
-        canvasGroup.alpha = 0;
+        if(canvasGroup != null )
+            canvasGroup.alpha = 0;
     }
     public virtual void OnHideAnimation(Action callback)
     {

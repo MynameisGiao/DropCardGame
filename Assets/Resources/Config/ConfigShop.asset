@@ -12,3 +12,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 541f61e911f803644925f92d5716d854, type: 3}
   m_Name: ConfigShop
   m_EditorClassIdentifier: 
+  records:
+  - id: 1
+    name: Tiny Gold
+    image: S_001
+    price: 30
+    value: 500
+    shop_type: 1
+  - id: 2
+    name: Small Gold
+    image: S_002
+    price: 50
+    value: 700
+    shop_type: 1
+  - id: 3
+    name: Big Gold
+    image: S_003
+    price: 100
+    value: 1200
+    shop_type: 1
+  - id: 4
+    name: Tiny Gem
+    image: S_004
+    price: 500
+    value: 30
+    shop_type: 2
+  - id: 5
+    name: Small Gem
+    image: S_005
+    price: 700
+    value: 50
+    shop_type: 2
+  - id: 6
+    name: Big Gem
+    image: S_006
+    price: 1200
+    value: 100
+    shop_type: 2
