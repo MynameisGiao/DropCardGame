@@ -58,4 +58,6 @@ public class ViewManager : BYSingletonMono<ViewManager>
         cur_view.SendMessage("ShowView", (object)cb, SendMessageOptions.RequireReceiver);
 
     }
+
+
 }

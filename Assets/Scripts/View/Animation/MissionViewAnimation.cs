@@ -11,7 +11,7 @@ public class MissionViewAnimation : BaseViewAnimation
     {
         this.callback = callback;
         animator.Play("Hide", 0, 0);
-        
+
     }
     public override void OnShowAnimation(Action callback)
     {

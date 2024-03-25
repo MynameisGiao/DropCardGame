@@ -15,7 +15,7 @@ public class HomeView : BaseView
     }
     public void ShowDeckView()
     {
-        ViewManager.instance.SwitchView(ViewIndex.MissionView);
+        ViewManager.instance.SwitchView(ViewIndex.DeckView);
     }
     public void ShowShopView()
     {

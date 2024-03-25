@@ -9,4 +9,8 @@ public class DeckView : BaseView
         base.Setup(param);
 
     }
+    public void OnBack()
+    {
+        ViewManager.instance.SwitchView(ViewIndex.HomeView);
+    }
 }
