@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44402242, g: 0.49316543, b: 0.5722324, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -168,7 +168,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7bd5ba52461fb540b9aabb073517a79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deck: []
+  deck:
+  - id: 1
+    level: 1
+  - id: 2
+    level: 1
+  - id: 3
+    level: 1
+  - id: 4
+    level: 1
+  - id: 5
+    level: 1
 --- !u!114 &31601942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,6 +397,7 @@ MonoBehaviour:
   configWave: {fileID: 0}
   configShop: {fileID: 0}
   configUnit: {fileID: 0}
+  configUnitLevel: {fileID: 0}
 --- !u!1 &269853179
 GameObject:
   m_ObjectHideFlags: 0
@@ -1711,6 +1722,21 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d696030b35224fa4eadadf36072dc398, type: 3}
   - {fileID: 21300000, guid: 6c8172993b3df19409832f78d14d3184, type: 3}
   - {fileID: 21300000, guid: 9dfcea411b1f7d34d86a2f93ae0332f9, type: 3}
+  - {fileID: 21300000, guid: 3a4153f09baf21b40af47c3f7e924589, type: 3}
+  - {fileID: 21300000, guid: 76d73fe9e3ed7734fae4a85dbc6297fc, type: 3}
+  - {fileID: 21300000, guid: e7d686c0d3ae06441ad00d36b70ad64a, type: 3}
+  - {fileID: 21300000, guid: 212838a7803c73044b976f0b6f455050, type: 3}
+  - {fileID: 21300000, guid: ee1ec96c11843344888e02c4fd81907e, type: 3}
+  - {fileID: 21300000, guid: 3b28a1f7bc66d9448b0c3c37a850941c, type: 3}
+  - {fileID: 21300000, guid: d34eb72fdd1bb1f42a07f0a685eb53e7, type: 3}
+  - {fileID: 21300000, guid: 590b67c0038347543a2d4e4301bb9add, type: 3}
+  - {fileID: 21300000, guid: 2332b57ed52147d4f8f488477e9a5eb3, type: 3}
+  - {fileID: 21300000, guid: 9431a14ae4c834d49819378677c79d68, type: 3}
+  - {fileID: 21300000, guid: 01df5b3a36bd2344189299d6faffbd4e, type: 3}
+  - {fileID: 21300000, guid: 3ca37326b0607bd4fbf5286d19568a21, type: 3}
+  - {fileID: 21300000, guid: 8d81ffed3d4096047a69cc4b394e9a82, type: 3}
+  - {fileID: 21300000, guid: 5189887e4ae702a428c4b324f8f61999, type: 3}
+  - {fileID: 21300000, guid: e48ed1fe8758811478d694ae99368831, type: 3}
 --- !u!1 &1219744635
 GameObject:
   m_ObjectHideFlags: 0

@@ -63,7 +63,7 @@ public class DataModel : MonoBehaviour
             Dictionary<string, UnitData> dic = new Dictionary<string, UnitData>();
             foreach (UnitData unit in deck)
             {
-               dic.Add(unit.id.Tokey(), unit); 
+                dic.Add(unit.id.Tokey(), unit); ;
             }
             inventory.dic_unit = dic;
             playerData.inventory = inventory;
@@ -189,7 +189,10 @@ public class DataModel : MonoBehaviour
     private object UpdateDicDataByPath<T>(List<string> paths, string key, object data, T dataNew, Action callback = null)
     {
         object dataReturn = null;
+        // 1-> inventory
+        //2 -> gold
         string p = paths[0];
+        // data<=> playerData
         Type t = data.GetType();
         FieldInfo field = t.GetField(p);
         if (paths.Count == 1)

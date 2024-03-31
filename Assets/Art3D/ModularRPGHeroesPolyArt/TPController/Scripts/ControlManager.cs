@@ -18,9 +18,9 @@ namespace DM
         public Vector3 moveDir;     //stores the moving vector value of main character.
 
         [Header("Stats")]
-        public float moveSpeed = 3.5f;  //speed of running
-        public float sprintSpeed = 5f;  //speed of sprinting(double time of running)
-        public float rotateSpeed = 5;   //speed of character's turning around
+        public float moveSpeed = 3.5f;  //Speed of running
+        public float sprintSpeed = 5f;  //Speed of sprinting(double time of running)
+        public float rotateSpeed = 5;   //Speed of character's turning around
         public float jumpForce = 600f;  //how high you can jump value.
         
 
@@ -128,18 +128,18 @@ namespace DM
                 anim.SetTrigger("roll");    //Set trigger named "roll" on
             }            
             
-            float targetSpeed = moveSpeed;  //set run speed as target speed.
+            float targetSpeed = moveSpeed;  //set run Speed as target_unit Speed.
              
             if (sprint)
             {
-                targetSpeed = sprintSpeed;    //set sprint speed as target speed.            
+                targetSpeed = sprintSpeed;    //set sprint Speed as target_unit Speed.            
             }
 
             //mixing camera rotation value to the character moving value.
             Vector3 v = vertical * camManager.transform.forward;
             Vector3 h = horizontal * camManager.transform.right;            
 
-            //multiplying target speed and move amount.
+            //multiplying target_unit Speed and move amount.
             moveDir = ((v + h).normalized) * (targetSpeed * moveAmount);            
 
             //This is for isolating y velocity from the character control. 
@@ -157,7 +157,7 @@ namespace DM
                 int r = Random.Range(0, randomAttacks.Length);
                 targetAnim = randomAttacks[r];
 
-                anim.CrossFade(targetAnim, 0.1f); //play the target animation in 0.1 second.                 
+                anim.CrossFade(targetAnim, 0.1f); //play the target_unit animation in 0.1 second.                 
 
                 if (!onGround)
                 {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 
@@ -86,4 +87,33 @@ public class ConfigUnit : BYDataTable<ConfigUnitRecord>
         configCompare = new ConfigCompare<ConfigUnitRecord>("id");
         return configCompare;
     }
+    
+    public List<ConfigUnitRecord> GetUnitConfigCollection()
+    {
+        // lấy ra danh sách các file config có id không thuộc decks
+
+        List<UnitData> decks = DataController.instance.GetDeck();
+
+        List<ConfigUnitRecord> ls= new List<ConfigUnitRecord>();
+        foreach(ConfigUnitRecord x in records)
+        {
+            bool isInDecks = false;
+            foreach(UnitData d in decks)
+            {
+                if(d.id == x.ID) // thuộc decks
+                {
+                    isInDecks = true;
+                    break;
+                }
+            }
+            if(isInDecks == false)
+                ls.Add(x);
+        }
+        return ls;
+       
+       // linQ
+       //return records.Where(x => decks.Where(d => d.id == x.ID).Count() == 0).ToList();
+    }
+
+    
 }

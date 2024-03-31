@@ -10,7 +10,8 @@ public class DataSchema
     public const string INVENTORY = "inventory";
     public const string GOLD = "inventory/gold";
     public const string GEM = "inventory/gem";   
-    public const string DIC_UNIT = "info/dic_unit";
+    public const string DIC_UNIT = "inventory/dic_unit";
+    public const string DECK = "info/deck";
 }
 [Serializable]
 public class PlayerData

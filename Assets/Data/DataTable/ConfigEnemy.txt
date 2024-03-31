@@ -10,4 +10,4 @@ id	name	prefab	damage	hp	attack_rate
 9	Cavalry_1	E_009	6	24	3
 10	Cavalry_2	E_010	6	24	3
 11	Cavalry_Spear	E_011	6	24	3
-12	Orc	E_012	15	50	5
+12	Orc	E_012	20	50	5

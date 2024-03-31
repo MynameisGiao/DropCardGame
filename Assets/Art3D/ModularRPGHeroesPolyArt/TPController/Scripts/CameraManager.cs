@@ -6,11 +6,11 @@ namespace DM
 {
     public class CameraManager : MonoBehaviour
     {
-        public float followSpeed = 9f;  //defines camera speed that follows character.
-        public float mouseSpeed = 2f;   //defines mouse's control speed.
-        public float controllerSpeed = 7f;  //defines joypad's control speed.
+        public float followSpeed = 9f;  //defines camera Speed that follows character.
+        public float mouseSpeed = 2f;   //defines mouse's control Speed.
+        public float controllerSpeed = 7f;  //defines joypad's control Speed.
 
-        public Transform target;    //stores the target for camera.
+        public Transform target;    //stores the target_unit for camera.
 
         [HideInInspector]
         public Transform pivot;     //pivot for camera's rotation.
@@ -57,7 +57,7 @@ namespace DM
             HandleRotations(d, v, h, targetSpeed);
         }
 
-        void FollowTarget(float d)  //defines how camera follows the target.
+        void FollowTarget(float d)  //defines how camera follows the target_unit.
         {
             float speed = d * followSpeed;
             Vector3 targetPosition = Vector3.Lerp(transform.position, target.position, speed);

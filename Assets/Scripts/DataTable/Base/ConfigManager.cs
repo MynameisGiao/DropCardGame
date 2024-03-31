@@ -10,6 +10,7 @@ public class ConfigManager : BYSingletonMono<ConfigManager>
     public ConfigWave configWave;
     public ConfigShop configShop;
     public ConfigUnit configUnit;
+    public ConfigUnitLevel configUnitLevel;
     public void InitConfig(Action callback)
     {
         StartCoroutine(ProgressLoadConfig(callback));
@@ -30,6 +31,9 @@ public class ConfigManager : BYSingletonMono<ConfigManager>
 
         configUnit = Resources.Load("Config/ConfigUnit", typeof(ScriptableObject)) as ConfigUnit;
         yield return new WaitUntil(() => configUnit != null);
+
+        configUnitLevel = Resources.Load("Config/ConfigUnitLevel", typeof(ScriptableObject)) as ConfigUnitLevel;
+        yield return new WaitUntil(() => configUnitLevel != null);
 
         if (callback != null)
         {

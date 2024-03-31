@@ -8,7 +8,9 @@ public enum DialogIndex
     WinDialog=2,
     FailDialog=3,
     SettingDialog=4,
-    RenameDialog=5
+    RenameDialog=5,
+    DeckEquipDialog=6,
+    InfoUnitDialog=7
 }
 public class DialogParam
 {
@@ -22,6 +24,14 @@ public class SettingDialogParam : DialogParam
 {
     public bool isShowPause;
 }
+public class DeckEquipDialogParam : DialogParam
+{
+    public UnitData unitData;
+}
+public class InfoUnitDialogParam: DialogParam
+{
+    public ConfigUnitRecord cf_unit;
+}
 public class DialogConfig
 {
     public static DialogIndex[] dialogIndices =
@@ -31,5 +41,7 @@ public class DialogConfig
       DialogIndex.FailDialog,
       DialogIndex.SettingDialog,
       DialogIndex.RenameDialog,
+      DialogIndex.DeckEquipDialog,
+      DialogIndex.InfoUnitDialog
     };
 }

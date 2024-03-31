@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
+using Newtonsoft.Json;
 using UnityEngine;
 
 public class DataController : BYSingletonMono<DataController>
@@ -11,15 +13,21 @@ public class DataController : BYSingletonMono<DataController>
         dataModel.InitData(callback);
         DataTrigger.RegisterValueChange(DataSchema.DIC_UNIT, (dic) =>
         {
-
+            Debug.LogError(" DIC_UNIT  change");
+        });
+        DataTrigger.RegisterValueChange(DataSchema.DIC_UNIT + "/K_3", (unit) =>
+        {
+            Debug.LogError(" unit change");
         });
     }
     public void CreateMissionData()
     {
-        //if(dataModel.ReadMissionData() == null)
-        //{
-        //    dataModel.CreateDataMission();
-        //}
+        Dictionary<string, UnitData> dicUnit = dataModel.ReadData<Dictionary<string, UnitData>>(DataSchema.DIC_UNIT);
+
+        int id = 2;
+        UnitData unit = dataModel.ReadDicData<UnitData>(DataSchema.DIC_UNIT, id.Tokey());
+        string s = JsonConvert.SerializeObject(unit);
+        Debug.LogError(s);
 
     }
     public PlayerInfo GetPlayerInfo()
@@ -80,11 +88,17 @@ public class DataController : BYSingletonMono<DataController>
     {
         if(cf.Shop_type==1) // add gold
         {
+            int gem = GetGem();
+            if (gem <= 0)
+                return;
             PayGem(cf.Price);
             AddGold(cf.Value);
         }
         else if(cf.Shop_type == 2)// add gem
         {
+            int gold = GetGold();
+            if (gold <= 0)
+                return;
             PayGold(cf.Price);
             AddGem(cf.Value);
         }
@@ -108,5 +122,64 @@ public class DataController : BYSingletonMono<DataController>
         
         DialogManager.instance.ShowDialog(DialogIndex.RenameDialog);
     }
-    
+
+    public List<UnitData> GetDeck()
+    {
+        return dataModel.ReadData<List<UnitData>>(DataSchema.DECK);
+    }
+    public UnitData GetUnitData(int id)
+    {
+        return dataModel.ReadDicData<UnitData>(DataSchema.DIC_UNIT, id.Tokey());
+    }
+    public void UnlockUnit(ConfigUnitLevelRecord configUnitLevelRecord, Action callback)
+    {
+        UnitData unitData=GetUnitData(configUnitLevelRecord.ID);
+        if(unitData == null)
+        {
+            
+            unitData = new UnitData();
+            unitData.id = configUnitLevelRecord.ID;
+            unitData.level = 1;
+            int gold = GetGold();
+            if(gold >= configUnitLevelRecord.Min_cost)
+            {
+                gold-=configUnitLevelRecord.Min_cost;
+                dataModel.UpdateData(DataSchema.GOLD, gold);
+                dataModel.UpdateDicData<UnitData>(DataSchema.DIC_UNIT, unitData.id.Tokey(), unitData);
+
+            }
+        }
+        callback();
+    }
+
+    public void UpgradeUnit(ConfigUnitLevelRecord cf_unit_lv, Action callback)
+    {
+        UnitData unitData = GetUnitData(cf_unit_lv.ID);
+        if (unitData != null)
+        {
+            if (unitData.level < cf_unit_lv.Maxlv)
+            {
+                int costLvNext = Utilities.CalculatorStat(cf_unit_lv.Min_cost, cf_unit_lv.Max_cost, cf_unit_lv.Maxlv, unitData.level + 1, cf_unit_lv.Factor_cost);
+                int gold = GetGold();
+                if (gold >= costLvNext)
+                {
+                    unitData.level = unitData.level + 1;
+                    gold -= costLvNext;
+                    dataModel.UpdateData(DataSchema.GOLD, gold);
+                    dataModel.UpdateDicData<UnitData>(DataSchema.DIC_UNIT, unitData.id.Tokey(), unitData);
+
+                }
+                
+            }
+           
+        }
+        callback();
+    }
+    public void ChangDeck(UnitData unitData, int index)
+    {
+        List<UnitData> deck = dataModel.ReadData<List<UnitData>>(DataSchema.DECK);
+        deck[index]= unitData;
+        dataModel.UpdateData(DataSchema.DECK, deck);
+    }
+
 }

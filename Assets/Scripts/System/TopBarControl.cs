@@ -91,6 +91,7 @@ public class TopBarControl : MonoBehaviour
 
     public void AddGoldGem()
     {
+        DialogManager.instance.HideAllDialog();
         if(ViewManager.instance.cur_view.view_index != ViewIndex.ShopView)
         {
             ViewManager.instance.SwitchView(ViewIndex.ShopView);
