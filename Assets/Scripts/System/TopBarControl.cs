@@ -35,9 +35,15 @@ public class TopBarControl : MonoBehaviour
 
     private void ViewManager_OnViewShow(BaseView obj)
     {
-        if(obj.view_index == ViewIndex.HomeView)
+        parent.DOAnchorPosY(0, 0.5f);
+        if (obj.view_index == ViewIndex.HomeView)
         {
             parent.DOAnchorPosY(0, 0.5f);
+        }
+        if (obj.view_index == ViewIndex.IngameView)
+        {
+            
+            parent.DOAnchorPosY(500, 1);
         }
     }
 

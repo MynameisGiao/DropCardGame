@@ -1,0 +1,88 @@
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
+public class DeckIngameItemControl : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandler
+{
+    public GameObject[] rare_objects;
+    public Image icon;
+    public TMP_Text name_lb;
+    public TMP_Text stamina_lb;
+    public TMP_Text cooldown_lb;
+
+    private UnitData cur_UnitData;
+    private ConfigUnitRecord config_unit;
+    private IngameView parent;
+    private RectTransform rect_item_drag;
+
+    public GameObject item_drag;
+    public Image icon_drag;
+    public Image clock;
+    public TMP_Text cd_count_lb;
+    public GameObject lockObj;
+    public GameObject lock_cd;
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        if (lockObj.activeSelf)
+            return;
+        parent.lock_ui.SetActive(true);
+        item_drag.SetActive(true);
+        item_drag.transform.SetParent(parent.m_DraggingPlane, false);
+        SetDraggedPosition(eventData);
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        SetDraggedPosition(eventData);
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        parent.lock_ui.SetActive(false);
+        item_drag.SetActive(false);
+    }
+    private void SetDraggedPosition(PointerEventData data)
+    {
+        Vector2 pos_local;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(parent.m_DraggingPlane, data.position, data.pressEventCamera, out pos_local);
+        rect_item_drag.anchoredPosition = pos_local;
+    }
+    public void Setup(UnitData unitData, IngameView parent)
+    {
+        this.parent = parent;
+        cur_UnitData = unitData;
+        List<UnitData> decks = DataController.instance.GetDeck();
+        parent.OnStanimaChange.AddListener(OnStaminaChange);
+
+        config_unit = ConfigManager.instance.configUnit.GetRecordByKeySearch(cur_UnitData.id);
+        name_lb.text = config_unit.Name;
+        stamina_lb.text= config_unit.Stamina.ToString();
+        cooldown_lb.text=config_unit.Cool_down.ToString();
+        ConfigUnitLevelRecord cf_level = ConfigManager.instance.configUnitLevel.GetRecordByKeySearch(config_unit.ID);
+        for (int i = 0; i < rare_objects.Length; i++)
+        {
+            rare_objects[i].SetActive(i + 1 == (int)config_unit.Rare);
+        }
+        icon.overrideSprite = SpriteLibControl.instance.GetSpriteByName(config_unit.Prefab);
+        icon_drag.overrideSprite = SpriteLibControl.instance.GetSpriteByName(config_unit.Prefab);
+        rect_item_drag = item_drag.GetComponent<RectTransform>();
+        lockObj.SetActive(true);
+        lock_cd.SetActive(false);
+    }
+    private void OnStaminaChange(int stamina)
+    {
+        Debug.LogError("Stamina: ");
+        if(stamina >= config_unit.Stamina)
+        {
+            lockObj.SetActive(false);
+        }
+        else
+        {
+            lockObj.SetActive(true);
+        }
+    }
+}

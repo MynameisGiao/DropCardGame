@@ -19,6 +19,8 @@ public class InfoUnitDialog : BaseDialog
     public Button btn_unlock;
     public Button btn_upgrade;
     public TMP_Text cost_lb;
+    public TMP_Text stamina_lb;
+    public TMP_Text cooldown_lb;
 
     private ConfigUnitRecord config_unit;
     private ConfigUnitLevelRecord cf_unit_lv;
@@ -49,6 +51,8 @@ public class InfoUnitDialog : BaseDialog
         name_lb.text = config_unit.Name.ToUpper();
         skill_lb.text = "Skill: " + config_unit.Skill;
         rare_lb.text = "Rare: " + config_unit.Rare.ToString();
+        stamina_lb.text= config_unit.Stamina.ToString();
+        cooldown_lb.text= config_unit.Cool_down.ToString();
        
         for (int i = 0; i < rare_objects.Length; i++)
         {

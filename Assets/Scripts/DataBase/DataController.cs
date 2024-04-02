@@ -11,23 +11,11 @@ public class DataController : BYSingletonMono<DataController>
     public void InitData(Action callback)
     {
         dataModel.InitData(callback);
-        DataTrigger.RegisterValueChange(DataSchema.DIC_UNIT, (dic) =>
-        {
-            Debug.LogError(" DIC_UNIT  change");
-        });
-        DataTrigger.RegisterValueChange(DataSchema.DIC_UNIT + "/K_3", (unit) =>
-        {
-            Debug.LogError(" unit change");
-        });
+       
     }
     public void CreateMissionData()
     {
-        Dictionary<string, UnitData> dicUnit = dataModel.ReadData<Dictionary<string, UnitData>>(DataSchema.DIC_UNIT);
-
-        int id = 2;
-        UnitData unit = dataModel.ReadDicData<UnitData>(DataSchema.DIC_UNIT, id.Tokey());
-        string s = JsonConvert.SerializeObject(unit);
-        Debug.LogError(s);
+       
 
     }
     public PlayerInfo GetPlayerInfo()

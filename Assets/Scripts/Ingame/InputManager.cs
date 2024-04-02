@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class InputManager : BYSingletonMono<InputManager>
 {
@@ -15,19 +16,24 @@ public class InputManager : BYSingletonMono<InputManager>
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0)) // nhấn 
+        delta_mouse = Vector3.zero;
+        if(!EventSystem.current.IsPointerOverGameObject())
         {
-            ogrinal= Input.mousePosition;
+            if (Input.GetMouseButtonDown(0)) // nhấn 
+            {
+                ogrinal = Input.mousePosition;
+            }
+            else if (Input.GetMouseButton(0)) // nhấn -trượt - thả
+            {
+                delta_mouse = Input.mousePosition - ogrinal;
+                ogrinal = Input.mousePosition;
+            }
+            else // thả
+            {
+                delta_mouse = Vector3.zero;
+                ogrinal = Vector3.zero;
+            }
         }
-        else if(Input.GetMouseButton(0)) // nhấn -trượt - thả
-        {
-            delta_mouse = Input.mousePosition - ogrinal;
-            ogrinal = Input.mousePosition;
-        }
-        else // thả
-        {
-            delta_mouse = Vector3.zero;
-            ogrinal=Vector3.zero;
-        }
+       
     }
 }
