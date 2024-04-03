@@ -90,4 +90,10 @@ public class MissionManager : BYSingletonMono<MissionManager>
     {
         Debug.LogError(" Enemy attack base: " + damageData.damage);
     }
+
+    public void OnCreateUnit(UnitData unitData, ConfigUnitRecord cf_unit, Vector3 pos_create)
+    {
+        GameObject unit = Instantiate(Resources.Load("Unit/" + cf_unit.Prefab, typeof(GameObject))) as GameObject;
+        unit.transform.position = pos_create;
+    }
 }

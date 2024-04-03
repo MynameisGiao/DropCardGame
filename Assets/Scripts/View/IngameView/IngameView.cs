@@ -39,13 +39,13 @@ public class IngameView : BaseView
     public override void OnShowView()
     {
         MissionManager.instance.OnWaveChange += OnWaveChange;
-        
+        StartCoroutine("LoopStamina");
     }
 
     private void OnWaveChange(int arg1, int arg2)
     {
         wave_lb.text = "WAVE: " + arg1.ToString() + " / " + arg2.ToString();
-        StartCoroutine("LoopStamina");
+        
       
     }
 
@@ -56,7 +56,7 @@ public class IngameView : BaseView
     }
     IEnumerator LoopStamina()
     {
-        WaitForSeconds wait = new WaitForSeconds(1);
+        WaitForSeconds wait = new WaitForSeconds(1.5f);
         while (true)
         {
             yield return wait;
@@ -66,5 +66,10 @@ public class IngameView : BaseView
         }
             
        
+    }
+    public void OnDropUnit(UnitData unitData, ConfigUnitRecord configUnit)
+    {
+        if(stamina >= configUnit.Stamina)
+            stamina -= configUnit.Stamina;
     }
 }
