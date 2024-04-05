@@ -60,4 +60,17 @@ public class EnemyNormalControl : EnemyControl
             
         }
     }
+    public override void OnDamage(int damage_u)
+    {
+        Debug.LogError("Enemy normal: " + damage_u);
+        hp -= damage_u;
+        if (hp <= 0)
+        {
+            if (cur_State != deadState)
+            {
+                GotoState(deadState);
+            }
+        }
+       
+    }
 }

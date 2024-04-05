@@ -6,14 +6,19 @@ using UnityEngine;
 
 public class ConfigScene : BYSingletonMono<ConfigScene>
 {
+    public Transform range_mark_unit;
+    public Material mark_unit_mat;
     [SerializeField]
     private List<Transform> enemy_spawns;
     [SerializeField]
-    private List<Transform> targets; 
-    
+    private List<Transform> targets;    
     
     private List<Transform> usedSpawnPoints = new List<Transform>();
 
+    private void Start()
+    {
+        range_mark_unit.gameObject.SetActive(false);
+    }
     public Transform GetEnemySpawnPoint()
     {
         if (enemy_spawns.Count == 0)
@@ -46,5 +51,11 @@ public class ConfigScene : BYSingletonMono<ConfigScene>
     {
         int index = UnityEngine.Random.Range(0, targets.Count);
         return targets[index];
+    }
+    public void SetMarkUnitRange(Vector3 pos,int range, bool isValid)
+    {
+        range_mark_unit.gameObject.SetActive(isValid);
+        range_mark_unit.position = pos;
+        range_mark_unit.localScale = Vector3.one*2 * range;
     }
 }

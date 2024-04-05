@@ -35,7 +35,7 @@ public class DeckIngameItemControl : MonoBehaviour, IBeginDragHandler, IDragHand
     private Vector3 pos_drag;
     private Vector3 pos_CreateUnit;
     private bool isDraging;
-
+    private ConfigUnitLevelRecord cf_level;
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -74,7 +74,9 @@ public class DeckIngameItemControl : MonoBehaviour, IBeginDragHandler, IDragHand
         invalid_obj.SetActive(false);
         isValid = false;
         isDraging = false;
-       
+        ConfigScene.instance.SetMarkUnitRange(Vector3.zero,1, false);
+
+
     }
     private void SetDraggedPosition(PointerEventData data)
     {
@@ -86,9 +88,10 @@ public class DeckIngameItemControl : MonoBehaviour, IBeginDragHandler, IDragHand
     }
     private void FixedUpdate()
     {
-        if(isDraging)
+        if (isDraging)
         {
             Ray r = cam.ScreenPointToRay(pos_drag);
+            Debug.DrawLine(r.origin, r.origin + r.direction * 5000, Color.cyan, 0.02f);
             RaycastHit hit;
             if (Physics.Raycast(r, out hit, 100, layerMask))
             {
@@ -96,15 +99,17 @@ public class DeckIngameItemControl : MonoBehaviour, IBeginDragHandler, IDragHand
                 invalid_obj.SetActive(false);
                 isValid = true;
                 pos_CreateUnit = hit.point;
+                ConfigScene.instance.SetMarkUnitRange(pos_CreateUnit, cf_level.GetRange(cur_UnitData.level), true);
             }
             else
             {
                 valid_obj.SetActive(false);
                 invalid_obj.SetActive(true);
                 isValid = false;
+                ConfigScene.instance.SetMarkUnitRange(pos_CreateUnit, cf_level.GetRange(cur_UnitData.level), false);
             }
         }
-       
+
     }
     public void Setup(UnitData unitData, IngameView parent)
     {
@@ -118,7 +123,7 @@ public class DeckIngameItemControl : MonoBehaviour, IBeginDragHandler, IDragHand
         name_lb.text = config_unit.Name;
         stamina_lb.text= config_unit.Stamina.ToString();
         cooldown_lb.text=config_unit.Cool_down.ToString();
-        ConfigUnitLevelRecord cf_level = ConfigManager.instance.configUnitLevel.GetRecordByKeySearch(config_unit.ID);
+        cf_level = ConfigManager.instance.configUnitLevel.GetRecordByKeySearch(config_unit.ID);
         for (int i = 0; i < rare_objects.Length; i++)
         {
             rare_objects[i].SetActive(i + 1 == (int)config_unit.Rare);

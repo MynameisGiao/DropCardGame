@@ -57,4 +57,16 @@ public class OrcControl : EnemyControl
 
         }
     }
-}
+    public override void OnDamage(int damage_u)
+    {
+        Debug.LogError("Orc take damage: " + damage_u);
+        hp -= damage_u;
+        if (hp <= 0)
+        {
+            if (cur_State != deadState)
+            {
+                GotoState(deadState);
+            }
+        }
+    }
+    }

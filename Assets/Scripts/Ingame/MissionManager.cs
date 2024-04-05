@@ -16,7 +16,7 @@ public class MissionManager : BYSingletonMono<MissionManager>
     // Start is called before the first frame update
     IEnumerator Start()
     {
-        cf_mission= GameManager.instance.cur_cf_mission;
+        cf_mission = GameManager.instance.cur_cf_mission;
         waves = cf_mission.Waves;
         yield return new WaitForSeconds(6);
         StopCoroutine("CreateNewWave");
@@ -25,11 +25,11 @@ public class MissionManager : BYSingletonMono<MissionManager>
     IEnumerator CreateNewWave()
     {
         index_wave++;
-        if(index_wave >= waves.Count)
+        if (index_wave >= waves.Count)
         {
             // mission complete
             Debug.LogError("Mission complete");
-            WinDialogParam param=new WinDialogParam();
+            WinDialogParam param = new WinDialogParam();
             param.cf_mission = cf_mission;
             DialogManager.instance.ShowDialog(DialogIndex.WinDialog, param);
         }
@@ -39,7 +39,7 @@ public class MissionManager : BYSingletonMono<MissionManager>
             total_enemy = cf_wave.Enemies.Count;
             count_enemy_create = 0;
             number_enemy_dead = 0;
-            
+
             yield return new WaitForSeconds(cf_wave.Time_Delay);
             OnWaveChange?.Invoke(index_wave + 1, waves.Count);
 
@@ -55,12 +55,12 @@ public class MissionManager : BYSingletonMono<MissionManager>
         yield return new WaitForSeconds(delay);
         // create enemy
         count_enemy_create++;
-        ConfigEnemyRecord cf_enemy=ConfigManager.instance.configEnemy.GetRecordByKeySearch(id);
-        GameObject e_obj = Instantiate(Resources.Load("Enemy/"+cf_enemy.Prefab,typeof(GameObject))) as GameObject;
+        ConfigEnemyRecord cf_enemy = ConfigManager.instance.configEnemy.GetRecordByKeySearch(id);
+        GameObject e_obj = Instantiate(Resources.Load("Enemy/" + cf_enemy.Prefab, typeof(GameObject))) as GameObject;
         Transform pos_trans = ConfigScene.instance.GetEnemySpawnPoint();
         e_obj.transform.position = pos_trans.position;
         e_obj.transform.forward = pos_trans.forward;
-        EnemyControl enemyControl= e_obj.GetComponent<EnemyControl>();
+        EnemyControl enemyControl = e_obj.GetComponent<EnemyControl>();
         enemyControl.Setup(new EnemyInitData { cf = cf_enemy });
     }
     public void EnemyDead(EnemyControl e)
@@ -86,14 +86,17 @@ public class MissionManager : BYSingletonMono<MissionManager>
     }
 
     // base chịu damageData từ enemy
-    public void OnDamage(DamageData damageData)
+    public void OnDamage(int damage_e)
     {
-        Debug.LogError(" Enemy attack base: " + damageData.damage);
+        Debug.LogError(" Enemy attack base: " + damage_e);
     }
 
-    public void OnCreateUnit(UnitData unitData, ConfigUnitRecord cf_unit, Vector3 pos_create)
+    public void OnCreateUnit(UnitData unitData, ConfigUnitRecord cf_unit, Vector3 posCreate)
     {
+
         GameObject unit = Instantiate(Resources.Load("Unit/" + cf_unit.Prefab, typeof(GameObject))) as GameObject;
-        unit.transform.position = pos_create;
+        unit.transform.position = posCreate;
+        unit.GetComponent<UnitControl>().Setup(new UnitInitData { configUnit = cf_unit, unitData = unitData });
+
     }
 }

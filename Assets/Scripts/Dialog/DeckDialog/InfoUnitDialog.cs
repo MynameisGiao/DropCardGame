@@ -64,15 +64,15 @@ public class InfoUnitDialog : BaseDialog
         if (data != null)
         {
 
-            int damage = Utilities.CalculatorStat(cf_unit_lv.Min_damage, cf_unit_lv.Max_damage, cf_unit_lv.Maxlv, data.level, cf_unit_lv.Factor_damage);
-            int hp = Utilities.CalculatorStat(cf_unit_lv.Min_hp, cf_unit_lv.Max_hp, cf_unit_lv.Maxlv, data.level, cf_unit_lv.Factor_hp);
+            int damage = cf_unit_lv.GetDamage(data.level);
+            int hp = cf_unit_lv.GetHP(data.level);
             level_lb.text = "Level: " + data.level.ToString();
             damage_lb.text = "Damage: " + damage.ToString();
             hp_lb.text = "Hp: " + hp.ToString();
             btn_upgrade.gameObject.SetActive(true);
             btn_unlock.gameObject.SetActive(false);
             
-            int costLvNext = Utilities.CalculatorStat(cf_unit_lv.Min_cost, cf_unit_lv.Max_cost, cf_unit_lv.Maxlv, data.level + 1, cf_unit_lv.Factor_cost);
+            int costLvNext = cf_unit_lv.GetCost(data.level+1);
             cost_lb.text=costLvNext.ToString();
             btn_upgrade.interactable = gold >= costLvNext;
             if(data.level >= cf_unit_lv.Maxlv)
@@ -85,12 +85,12 @@ public class InfoUnitDialog : BaseDialog
         else // data == null
         {
             level_lb.text = "Level: 1";
-            damage_lb.text = "Damage: " +cf_unit_lv.Min_damage.ToString();
-            hp_lb.text = "Hp: " + cf_unit_lv.Min_hp.ToString();
-            cost_lb.text = cf_unit_lv.Min_cost.ToString();
+            damage_lb.text = "Damage: " +cf_unit_lv.GetDamage(1).ToString();
+            hp_lb.text = "Hp: " + cf_unit_lv.GetHP(1).ToString();
+            cost_lb.text = cf_unit_lv.GetCost(1).ToString();
             btn_upgrade.gameObject.SetActive(false);
             btn_unlock.gameObject.SetActive(true);
-            btn_unlock.interactable = gold >= cf_unit_lv.Min_cost;
+            btn_unlock.interactable = gold >= cf_unit_lv.GetCost(1);
         }
 
     }

@@ -32,35 +32,35 @@ MonoBehaviour:
     prefab: U_003
     rare: 1
     stamina: 3
-    cool_down: 4
+    cool_down: 3
     skill: DoubleSword
   - id: 4
     name: Darius
     prefab: U_004
     rare: 1
     stamina: 3
-    cool_down: 4
+    cool_down: 3
     skill: MagicWand
   - id: 5
     name: Egan
     prefab: U_005
     rare: 1
     stamina: 3
-    cool_down: 4
+    cool_down: 3
     skill: SingleTwoHandSword
   - id: 6
     name: Bomer
     prefab: U_006
     rare: 2
     stamina: 5
-    cool_down: 5
+    cool_down: 6
     skill: No Weapon
   - id: 7
     name: Rick
     prefab: U_007
     rare: 2
     stamina: 5
-    cool_down: 5
+    cool_down: 6
     skill: BowAndArrow
   - id: 8
     name: Virsa

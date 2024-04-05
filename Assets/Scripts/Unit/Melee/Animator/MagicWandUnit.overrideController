@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MagicWandUnit
+  m_Controller: {fileID: 9100000, guid: d5d7e610676436342831b461d207aa85, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 392dc25dd8bd7f24387ce049f5e53ee2, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 79c09e2fad464b24eb8f7ba6d9aad34d, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 3502e15a7de777f46bfb7546a6f25f3d, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: d87742b9161c4e949840ce2c449e7d49, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 7bd056884c53e4441887932efa9459e5, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 7bd056884c53e4441887932efa9459e5, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: df031018b7ddd5a40adb7189ac6eb439, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: d0a32400570660c4fad9d4e8e2820104, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: b80eeb877a644004b9a1aab03292eacd, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 4cbd81e2b375c2a4ca9d62b2053ed341, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: e4dbac59d4f6fb5409cca744caf542f4, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: b383ba569d859284babe1b57c1f22056, type: 3}

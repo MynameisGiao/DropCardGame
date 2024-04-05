@@ -85,7 +85,7 @@ public class Orc_AttackUnitState : FSM_State
         base.OnAnimMiddle();
         if (Vector3.Distance(parent.trans.position, target_unit.position) <= parent.range_attack + 0.1f)
         {
-            target_unit.GetComponent<UnitControl>().OnDamage(parent.damageData);
+            target_unit.GetComponent<UnitControl>().OnDamage(parent.damage);
 
         }
 
@@ -106,11 +106,11 @@ public class Orc_AttackUnitState : FSM_State
             parent.trans.rotation = Quaternion.Slerp(parent.trans.rotation, q, Time.deltaTime * 30);
         }
     }
-    public override void Exit()
-    {
-        base.Exit();
-        parent.agent.isStopped = true;
-        parent.dataBinding.Speed = 0;
-    }
+    //public override void Exit()
+    //{
+    //    base.Exit();
+    //    parent.agent.isStopped = true;
+    //    parent.dataBinding.Speed = 0;
+    //}
 }
 

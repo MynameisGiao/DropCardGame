@@ -86,8 +86,7 @@ public class EN_AttackUnitState   : FSM_State
         base.OnAnimMiddle();
         if(Vector3.Distance(parent.trans.position, target_unit.position)<= parent.range_attack +0.1f)
         {
-            target_unit.GetComponent<UnitControl>().OnDamage(parent.damageData);
-           
+            target_unit.GetComponent<UnitControl>().OnDamage(parent.damage);
         }
        
     }
@@ -110,7 +109,7 @@ public class EN_AttackUnitState   : FSM_State
     public override void Exit()
     {
         base.Exit();
-        parent.agent.isStopped = true;
-        parent.dataBinding.Speed = 0;
+        parent.agent.isStopped = false;
+    
     }
 }

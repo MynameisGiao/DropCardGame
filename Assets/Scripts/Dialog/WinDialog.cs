@@ -7,6 +7,20 @@ public class WinDialog : BaseDialog
 {
     public TMP_Text coin_lb;
     public TMP_Text gem_lb;
+    public override void OnShowDialog()
+    {
+        base.OnShowDialog();
+        Time.timeScale = 0;
+        AudioListener.pause = true;
+
+    }
+    public override void OnHideDialog()
+    {
+        base.OnHideDialog();
+        Time.timeScale = 1;
+        AudioListener.pause = false;
+    }
+
     public override void Setup(DialogParam param)
     {
         base.Setup(param);

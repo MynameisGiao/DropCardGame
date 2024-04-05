@@ -26,6 +26,6 @@ public class EN_AttackBaseState : FSM_State
         Debug.LogError("Attack base!");
 
         // base chịu damage
-        MissionManager.instance.OnDamage(parent.damageData);
+        MissionManager.instance.OnDamage(parent.damage);
     }
 }

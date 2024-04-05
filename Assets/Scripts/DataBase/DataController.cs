@@ -129,9 +129,10 @@ public class DataController : BYSingletonMono<DataController>
             unitData.id = configUnitLevelRecord.ID;
             unitData.level = 1;
             int gold = GetGold();
-            if(gold >= configUnitLevelRecord.Min_cost)
+            int min_cost = configUnitLevelRecord.GetCost(1);
+            if(gold >= min_cost)
             {
-                gold-=configUnitLevelRecord.Min_cost;
+                gold-= min_cost;
                 dataModel.UpdateData(DataSchema.GOLD, gold);
                 dataModel.UpdateDicData<UnitData>(DataSchema.DIC_UNIT, unitData.id.Tokey(), unitData);
 
@@ -147,7 +148,7 @@ public class DataController : BYSingletonMono<DataController>
         {
             if (unitData.level < cf_unit_lv.Maxlv)
             {
-                int costLvNext = Utilities.CalculatorStat(cf_unit_lv.Min_cost, cf_unit_lv.Max_cost, cf_unit_lv.Maxlv, unitData.level + 1, cf_unit_lv.Factor_cost);
+                int costLvNext = cf_unit_lv.GetCost(unitData.level+1);
                 int gold = GetGold();
                 if (gold >= costLvNext)
                 {
