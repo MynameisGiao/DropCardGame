@@ -1212,6 +1212,37 @@ Transform:
   - {fileID: 6759569296147396961}
   m_Father: {fileID: 3579772696186534957}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4677150618070083728
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4638194731073171328}
+  m_Layer: 6
+  m_Name: Anchor_hub
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4638194731073171328
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4677150618070083728}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8584356945464185575}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4680700060153786375
 GameObject:
   m_ObjectHideFlags: 0
@@ -2775,6 +2806,7 @@ Transform:
   m_Children:
   - {fileID: 2125134630873395613}
   - {fileID: 3453505676270160065}
+  - {fileID: 4638194731073171328}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2655137481566447708
@@ -2810,6 +2842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640b102d8bb68134d8665b64f8118714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anchor_hub: {fileID: 4638194731073171328}
   trans: {fileID: 0}
   trans_detect: {fileID: 3453505676270160065}
   range_detect: 7
@@ -2828,6 +2861,7 @@ MonoBehaviour:
   mask_unit:
     serializedVersion: 2
     m_Bits: 256
+  hp_hub: {fileID: 0}
   dataBinding: {fileID: 2834076955789225137}
   attackUnitState:
     target_unit: {fileID: 0}
@@ -2856,7 +2890,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 9211438301064293515}
   m_Enabled: 1
   m_AgentTypeID: -1372625422
-  m_Radius: 0.5
+  m_Radius: 0.6
   m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
@@ -2865,7 +2899,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 1.6
+  m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -2888,7 +2922,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1.7
+  m_Radius: 0.6
+  m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0.75, z: 0}

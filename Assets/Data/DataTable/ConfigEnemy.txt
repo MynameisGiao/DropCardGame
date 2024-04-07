@@ -9,5 +9,7 @@ id	name	prefab	damage	hp	attack_rate
 8	Twohandle	E_008	5	20	2
 9	Cavalry_1	E_009	6	24	3
 10	Cavalry_2	E_010	6	24	3
-11	Cavalry_Spear	E_011	6	24	3
-12	Orc	E_012	20	50	5
+11	Cavalry_Spear	E_011	6	26	3
+12	Cavalry_King_1	E_012	10	20	3
+13	Cavalry_King_2	E_013	10	30	3
+14	Cavalry_King_3	E_014	10	30	3

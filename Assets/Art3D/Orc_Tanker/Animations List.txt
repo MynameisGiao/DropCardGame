@@ -1,9 +1,0 @@
-Animations List:
-01. Run:0-20
-02. Walk: 21-55
-03. Idle:56-86
-04. Attack:87-167
-05. Jump:168-192
-06. R_hurt 192-213
-07. L_hurt214-234
-08. Die: 235-265

@@ -29,6 +29,6 @@ public class UnitMeleeControl : UnitControl
                 GotoState(deadState);
             }
         }
-       
+       base.OnDamage(damage_e);
     }
 }

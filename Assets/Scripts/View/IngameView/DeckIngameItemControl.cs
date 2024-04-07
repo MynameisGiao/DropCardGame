@@ -126,9 +126,9 @@ public class DeckIngameItemControl : MonoBehaviour, IBeginDragHandler, IDragHand
         cooldown_lb.text=config_unit.Cool_down.ToString();
         cf_level = ConfigManager.instance.configUnitLevel.GetRecordByKeySearch(config_unit.ID);
         if (cur_UnitData.level < cf_level.Maxlv)
-            level_lb.text = "Lv " + cur_UnitData.level.ToString();
+            level_lb.text = cur_UnitData.level.ToString();
         else
-            level_lb.text = "MAX LV ";
+            level_lb.text = "Max";
         
         for (int i = 0; i < rare_objects.Length; i++)
         {

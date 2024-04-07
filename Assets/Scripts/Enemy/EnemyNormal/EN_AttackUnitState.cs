@@ -112,6 +112,7 @@ public class EN_AttackUnitState   : FSM_State
         base.Exit();
         parent.agent.isStopped = false;
         isAttacking = false;
+        parent.agent.stoppingDistance = 0;
     
     }
 }

@@ -23,9 +23,11 @@ public class EN_AttackBaseState : FSM_State
     public override void OnAnimMiddle()
     {
         base.OnAnimMiddle();
-        Debug.LogError("Attack base!");
-
         // base chịu damage
         MissionManager.instance.OnDamage(parent.damage);
+    }
+    public override void Exit()
+    {
+        base.Exit();
     }
 }

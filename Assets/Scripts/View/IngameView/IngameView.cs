@@ -15,8 +15,13 @@ public class IngameView : BaseView
     public RectTransform m_DraggingPlane;
 
     private int stamina;
-
     public UnityEvent<int> OnStanimaChange;
+    public RectTransform parent_hub; 
+
+    public Image hp_base_fg;
+    private int previousHp;
+    private int previousMaxHp;
+
     public override void Setup(ViewParam param)
     {
         lock_ui.SetActive(false);
@@ -38,9 +43,19 @@ public class IngameView : BaseView
    
     public override void OnShowView()
     {
-        MissionManager.instance.OnWaveChange += OnWaveChange;
+        hp_base_fg.fillAmount = 1;
+        MissionManager.instance.OnWaveChange.AddListener(OnWaveChange);
         StartCoroutine("LoopStamina");
+        MissionManager.instance.OnBaseHpChange.AddListener(OnBaseHpChange);
+        
     }
+
+    private void OnBaseHpChange(int hp, int maxhp)
+    {
+        float val = (float)hp / (float)maxhp;
+        hp_base_fg.fillAmount = val;
+    }
+
 
     private void OnWaveChange(int arg1, int arg2)
     {
@@ -51,7 +66,7 @@ public class IngameView : BaseView
 
     public override void OnHideView()
     {
-        MissionManager.instance.OnWaveChange -= OnWaveChange;
+        OnStanimaChange.RemoveAllListeners();
         StopCoroutine("LoopStamina");
     }
     IEnumerator LoopStamina()

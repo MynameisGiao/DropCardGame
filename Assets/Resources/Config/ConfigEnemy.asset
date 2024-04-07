@@ -77,11 +77,23 @@ MonoBehaviour:
     name: Cavalry_Spear
     prefab: E_011
     damage: 6
-    hp: 24
+    hp: 26
     attack_rate: 3
   - id: 12
-    name: Orc
+    name: Cavalry_King_1
     prefab: E_012
-    damage: 20
-    hp: 50
-    attack_rate: 5
+    damage: 10
+    hp: 20
+    attack_rate: 3
+  - id: 13
+    name: Cavalry_King_2
+    prefab: E_013
+    damage: 10
+    hp: 30
+    attack_rate: 3
+  - id: 14
+    name: Cavalry_King_3
+    prefab: E_014
+    damage: 10
+    hp: 30
+    attack_rate: 3

@@ -24,7 +24,7 @@ public class EN_MoveState : FSM_State
     }
     public override void Update()
     {
-        base.Update();
+
         delay_check += Time.deltaTime;
         parent.agent.SetDestination(target.position);
         UpdateRotation();
@@ -33,9 +33,10 @@ public class EN_MoveState : FSM_State
         parent.dataBinding.Speed = cur_speed_anim;
         if(delay_check> 0.5f)
         {
-            if (parent.agent.remainingDistance <= 0.1f)
+            if (parent.agent.remainingDistance <= 0.25f)
             {
                 parent.GotoState(parent.attackBaseState);
+
             }
         }
         

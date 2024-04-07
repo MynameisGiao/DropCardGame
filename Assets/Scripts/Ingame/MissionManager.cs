@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.VersionControl;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class MissionManager : BYSingletonMono<MissionManager>
 {
@@ -12,7 +14,14 @@ public class MissionManager : BYSingletonMono<MissionManager>
     private int number_enemy_dead;
     private int total_enemy;
     private int count_enemy_create;
-    public event Action<int, int> OnWaveChange;
+    public UnityEvent <int, int> OnWaveChange;
+
+    private int hp = 50;
+    private int max_hp = 50;
+    public  UnityEvent<int, int> OnBaseHpChange;
+
+    private bool isEndMission = false;
+   
     // Start is called before the first frame update
     IEnumerator Start()
     {
@@ -28,7 +37,10 @@ public class MissionManager : BYSingletonMono<MissionManager>
         if (index_wave >= waves.Count)
         {
             // mission complete
+            OnWaveChange.RemoveAllListeners();
+            OnBaseHpChange.RemoveAllListeners();
             Debug.LogError("Mission complete");
+            BYPoolManager.instance.GetPool("HPHub").DeSpawnAll();
             WinDialogParam param = new WinDialogParam();
             param.cf_mission = cf_mission;
             DialogManager.instance.ShowDialog(DialogIndex.WinDialog, param);
@@ -88,7 +100,20 @@ public class MissionManager : BYSingletonMono<MissionManager>
     // base chịu damageData từ enemy
     public void OnDamage(int damage_e)
     {
-        Debug.LogError(" Enemy attack base: " + damage_e);
+        hp -= damage_e;
+        OnBaseHpChange?.Invoke(hp, max_hp);
+        if (hp<=0 )
+        {
+            hp = 0;
+            if(!isEndMission)
+            {
+                BYPoolManager.instance.GetPool("HPHub").DeSpawnAll();
+                DialogManager.instance.ShowDialog(DialogIndex.FailDialog);
+                isEndMission = true;
+            }
+           
+        }
+        
     }
 
     public void OnCreateUnit(UnitData unitData, ConfigUnitRecord cf_unit, Vector3 posCreate)

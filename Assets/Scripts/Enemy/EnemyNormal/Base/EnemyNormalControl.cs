@@ -70,6 +70,6 @@ public class EnemyNormalControl : EnemyControl
                 GotoState(deadState);
             }
         }
-       
+       base.OnDamage(damage_u);
     }
 }

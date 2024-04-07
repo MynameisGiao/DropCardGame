@@ -7,12 +7,11 @@ public class EnemyInitData
 {
     public ConfigEnemyRecord cf;
 }
-//public class DamageData
-//{
-//    public int damage;
-//}
+
 public class EnemyControl : FSM_System
 {
+    public Transform anchor_hub;
+
     public Transform trans;
     public Transform trans_detect;
     public float range_detect;
@@ -23,6 +22,7 @@ public class EnemyControl : FSM_System
     public float time_attack;
     public int damage;
     public LayerMask mask_unit;
+    public HPHub hp_hub;
     public virtual void Setup(EnemyInitData enemyInitData)
     {
         trans = transform;
@@ -32,16 +32,24 @@ public class EnemyControl : FSM_System
         cf=enemyInitData.cf;
         hp=cf.Hp;
         damage=cf.Damage;
-       // damageData.damage=cf.Damage; // damage enemy lấy từ file cf
+
+        Transform hub_trans = BYPoolManager.instance.GetPool("HPHub").Spawn();
+        IngameView ingameView= (IngameView)ViewManager.instance.cur_view;
+        hub_trans.transform.SetParent(ingameView.parent_hub,false);
+        hp_hub= hub_trans.GetComponent<HPHub>();
+        hp_hub.Setup(anchor_hub, ingameView.parent_hub, Color.red);
+
     }
 
     
     public virtual void OnDamage(int damage_u)
     {
         // chịu damage từ Unit
+        hp_hub.UpdateHP(hp, cf.Hp);
     }
     public void OnDead()
     {
+        hp_hub.OnDetachHub();
         MissionManager.instance.EnemyDead(this);
         Destroy(gameObject);
     }

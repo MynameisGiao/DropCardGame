@@ -14,6 +14,7 @@ public class ConfigScene : BYSingletonMono<ConfigScene>
     private List<Transform> targets;    
     
     private List<Transform> usedSpawnPoints = new List<Transform>();
+    private List<Transform> usedTargetPoints = new List<Transform>();
 
     private void Start()
     {
@@ -49,8 +50,32 @@ public class ConfigScene : BYSingletonMono<ConfigScene>
 
     public Transform GetRandomTarget()
     {
-        int index = UnityEngine.Random.Range(0, targets.Count);
-        return targets[index];
+        //int index = UnityEngine.Random.Range(0, targets.Count);
+        //return targets[index];
+        if (targets.Count == 0)
+        {
+            Debug.LogError("No enemy spawn points available!");
+            return null;
+        }
+
+        // Lọc những điểm spawn chưa được sử dụng
+        List<Transform> availableTargetPoints = targets.Except(usedTargetPoints).ToList();
+
+        if (availableTargetPoints.Count == 0)
+        {
+            Debug.LogWarning("All enemy spawn points have been used. Reusing points...");
+            usedTargetPoints.Clear();
+            availableTargetPoints = new List<Transform>(targets);
+        }
+
+        // Chọn một điểm spawn ngẫu nhiên từ những điểm còn lại
+        int index = UnityEngine.Random.Range(0, availableTargetPoints.Count);
+        Transform selectedTargetPoint = availableTargetPoints[index];
+
+        // Đánh dấu điểm spawn đã được sử dụng
+        usedTargetPoints.Add(selectedTargetPoint);
+
+        return selectedTargetPoint;
     }
     public void SetMarkUnitRange(Vector3 pos,int range, bool isValid)
     {

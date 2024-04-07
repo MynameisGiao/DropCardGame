@@ -32,6 +32,7 @@ public class WinDialog : BaseDialog
     public void OnClaim()
     {
         DialogManager.instance.HideDialog(dialogIndex);
+        ViewManager.instance.SwitchView(ViewIndex.EmptyView);
         LoadSceneManager.instance.LoadSceneByIndex(1, () =>
         {
             ViewManager.instance.SwitchView(ViewIndex.MissionView);
