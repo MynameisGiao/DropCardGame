@@ -89,19 +89,7 @@ public class ConfigUnitLevelRecord
         return Utilities.CalculatorStat(min_damage, max_damage, maxlv, level, factor_damage);
     }
     // min_power_skill	max_power_skill	factor_power_skill
-    [SerializeField]	
-    private int min_power_skill;
-
-    [SerializeField]
-    private int max_power_skill;
-
-    [SerializeField]
-    private float factor_power_skill;
- 
-    public int GetPowerSkill(int level)
-    {
-        return Utilities.CalculatorStat(min_power_skill, max_power_skill, maxlv, level, factor_power_skill);
-    }
+   
     //min_hp	max_hp	factor_hp
     [SerializeField]
     private int min_hp;

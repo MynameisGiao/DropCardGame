@@ -1,8 +1,8 @@
 id	stage	name	sceneName	waves	reward1	reward2
-1	1	attack the citadel_1	Ingame_01	1;2;3	50	5
-2	2	attack the citadel_2	Ingame_01	2;3;4;5	80	5
-3	3	attack the citadel_3	Ingame_02	1;4;5;6	100	10
-4	4	attack the citadel_4	Ingame_02	1;3;6;7	120	10
-5	5	inside the citadel_1	Ingame_03	2;3;4;5;6	150	15
-6	6	inside the citadel_2	Ingame_03	3;4;5;6;7	200	15
-7	7	Orc Attack	Ingame_04	8;8;8	300	30
+1	1	attack the citadel_1	Ingame_01	1;2;3	200	20
+2	2	attack the citadel_2	Ingame_01	2;3;4;5	250	20
+3	3	attack the citadel_3	Ingame_02	1;4;5;6	300	40
+4	4	attack the citadel_4	Ingame_02	1;3;6;7	380	40
+5	5	inside the citadel_1	Ingame_03	2;3;4;5;6	450	70
+6	6	inside the citadel_2	Ingame_03	3;4;5;6;7	600	70
+7	7	Orc Attack	Ingame_04	8;8;8	1000	200

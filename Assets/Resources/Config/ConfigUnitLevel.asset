@@ -15,11 +15,11 @@ MonoBehaviour:
   records:
   - id: 1
     maxlv: 10
-    min_cost: 30
-    max_cost: 300
+    min_cost: 80
+    max_cost: 800
     factor_cost: 1
     min_range: 3
-    max_range: 7
+    max_range: 10
     factor_range: 1
     min_attack_speed: 3
     max_attack_speed: 2
@@ -27,19 +27,16 @@ MonoBehaviour:
     min_damage: 3
     max_damage: 10
     factor_damage: 1
-    min_power_skill: 2
-    max_power_skill: 10
-    factor_power_skill: 1
-    min_hp: 8
-    max_hp: 20
+    min_hp: 15
+    max_hp: 40
     factor_hp: 1
   - id: 2
     maxlv: 10
-    min_cost: 30
-    max_cost: 300
+    min_cost: 80
+    max_cost: 800
     factor_cost: 1
     min_range: 3
-    max_range: 7
+    max_range: 10
     factor_range: 1
     min_attack_speed: 3
     max_attack_speed: 2
@@ -47,19 +44,16 @@ MonoBehaviour:
     min_damage: 3
     max_damage: 10
     factor_damage: 1
-    min_power_skill: 2
-    max_power_skill: 10
-    factor_power_skill: 1
-    min_hp: 8
-    max_hp: 20
+    min_hp: 15
+    max_hp: 40
     factor_hp: 1
   - id: 3
     maxlv: 10
-    min_cost: 30
-    max_cost: 300
+    min_cost: 80
+    max_cost: 800
     factor_cost: 1
     min_range: 3
-    max_range: 7
+    max_range: 10
     factor_range: 1
     min_attack_speed: 3
     max_attack_speed: 2
@@ -67,19 +61,16 @@ MonoBehaviour:
     min_damage: 3
     max_damage: 10
     factor_damage: 1
-    min_power_skill: 2
-    max_power_skill: 10
-    factor_power_skill: 1
-    min_hp: 8
-    max_hp: 20
+    min_hp: 15
+    max_hp: 40
     factor_hp: 1
   - id: 4
     maxlv: 10
-    min_cost: 30
-    max_cost: 300
+    min_cost: 80
+    max_cost: 800
     factor_cost: 1
     min_range: 3
-    max_range: 7
+    max_range: 10
     factor_range: 1
     min_attack_speed: 3
     max_attack_speed: 2
@@ -87,19 +78,16 @@ MonoBehaviour:
     min_damage: 3
     max_damage: 10
     factor_damage: 1
-    min_power_skill: 2
-    max_power_skill: 10
-    factor_power_skill: 1
-    min_hp: 8
-    max_hp: 20
+    min_hp: 15
+    max_hp: 40
     factor_hp: 1
   - id: 5
     maxlv: 10
-    min_cost: 30
-    max_cost: 300
+    min_cost: 80
+    max_cost: 800
     factor_cost: 1
     min_range: 3
-    max_range: 7
+    max_range: 10
     factor_range: 1
     min_attack_speed: 3
     max_attack_speed: 2
@@ -107,19 +95,16 @@ MonoBehaviour:
     min_damage: 3
     max_damage: 10
     factor_damage: 1
-    min_power_skill: 2
-    max_power_skill: 10
-    factor_power_skill: 1
-    min_hp: 8
-    max_hp: 20
+    min_hp: 15
+    max_hp: 40
     factor_hp: 1
   - id: 6
     maxlv: 15
-    min_cost: 50
-    max_cost: 500
+    min_cost: 90
+    max_cost: 1000
     factor_cost: 1
     min_range: 4
-    max_range: 8
+    max_range: 13
     factor_range: 1
     min_attack_speed: 3
     max_attack_speed: 2
@@ -127,19 +112,16 @@ MonoBehaviour:
     min_damage: 3
     max_damage: 20
     factor_damage: 1
-    min_power_skill: 3
-    max_power_skill: 13
-    factor_power_skill: 1
-    min_hp: 10
-    max_hp: 30
+    min_hp: 20
+    max_hp: 40
     factor_hp: 1
   - id: 7
     maxlv: 15
-    min_cost: 50
-    max_cost: 500
+    min_cost: 90
+    max_cost: 1000
     factor_cost: 1
     min_range: 4
-    max_range: 8
+    max_range: 13
     factor_range: 1
     min_attack_speed: 3
     max_attack_speed: 2
@@ -147,19 +129,16 @@ MonoBehaviour:
     min_damage: 3
     max_damage: 20
     factor_damage: 1
-    min_power_skill: 3
-    max_power_skill: 13
-    factor_power_skill: 1
-    min_hp: 10
-    max_hp: 30
+    min_hp: 20
+    max_hp: 50
     factor_hp: 1
   - id: 8
     maxlv: 15
-    min_cost: 50
-    max_cost: 500
+    min_cost: 90
+    max_cost: 1000
     factor_cost: 1
     min_range: 4
-    max_range: 8
+    max_range: 13
     factor_range: 1
     min_attack_speed: 2.5
     max_attack_speed: 1.5
@@ -167,19 +146,16 @@ MonoBehaviour:
     min_damage: 4
     max_damage: 20
     factor_damage: 1
-    min_power_skill: 3
-    max_power_skill: 13
-    factor_power_skill: 1
-    min_hp: 10
-    max_hp: 30
+    min_hp: 20
+    max_hp: 50
     factor_hp: 1
   - id: 9
     maxlv: 15
-    min_cost: 50
-    max_cost: 500
+    min_cost: 90
+    max_cost: 1000
     factor_cost: 1
     min_range: 4
-    max_range: 8
+    max_range: 13
     factor_range: 1
     min_attack_speed: 2.5
     max_attack_speed: 1.5
@@ -187,19 +163,16 @@ MonoBehaviour:
     min_damage: 4
     max_damage: 20
     factor_damage: 1
-    min_power_skill: 3
-    max_power_skill: 13
-    factor_power_skill: 1
-    min_hp: 10
-    max_hp: 30
+    min_hp: 20
+    max_hp: 50
     factor_hp: 1
   - id: 10
     maxlv: 15
-    min_cost: 50
-    max_cost: 500
+    min_cost: 90
+    max_cost: 1000
     factor_cost: 1
     min_range: 4
-    max_range: 8
+    max_range: 13
     factor_range: 1
     min_attack_speed: 2.5
     max_attack_speed: 1.5
@@ -207,19 +180,16 @@ MonoBehaviour:
     min_damage: 4
     max_damage: 20
     factor_damage: 1
-    min_power_skill: 3
-    max_power_skill: 13
-    factor_power_skill: 1
-    min_hp: 10
-    max_hp: 30
+    min_hp: 20
+    max_hp: 50
     factor_hp: 1
   - id: 11
     maxlv: 15
-    min_cost: 50
-    max_cost: 500
+    min_cost: 90
+    max_cost: 1000
     factor_cost: 1
     min_range: 4
-    max_range: 8
+    max_range: 13
     factor_range: 1
     min_attack_speed: 2.5
     max_attack_speed: 1.5
@@ -227,19 +197,16 @@ MonoBehaviour:
     min_damage: 4
     max_damage: 20
     factor_damage: 1
-    min_power_skill: 3
-    max_power_skill: 13
-    factor_power_skill: 1
-    min_hp: 10
-    max_hp: 30
+    min_hp: 20
+    max_hp: 50
     factor_hp: 1
   - id: 12
     maxlv: 20
-    min_cost: 90
-    max_cost: 1000
+    min_cost: 150
+    max_cost: 1700
     factor_cost: 1
     min_range: 5
-    max_range: 10
+    max_range: 18
     factor_range: 1
     min_attack_speed: 2
     max_attack_speed: 1
@@ -247,19 +214,16 @@ MonoBehaviour:
     min_damage: 5
     max_damage: 30
     factor_damage: 1
-    min_power_skill: 4
-    max_power_skill: 20
-    factor_power_skill: 1
-    min_hp: 15
-    max_hp: 50
+    min_hp: 25
+    max_hp: 60
     factor_hp: 1
   - id: 13
     maxlv: 20
-    min_cost: 90
-    max_cost: 1000
+    min_cost: 150
+    max_cost: 1700
     factor_cost: 1
     min_range: 5
-    max_range: 10
+    max_range: 18
     factor_range: 1
     min_attack_speed: 2
     max_attack_speed: 1
@@ -267,19 +231,16 @@ MonoBehaviour:
     min_damage: 5
     max_damage: 30
     factor_damage: 1
-    min_power_skill: 4
-    max_power_skill: 20
-    factor_power_skill: 1
-    min_hp: 15
-    max_hp: 50
+    min_hp: 25
+    max_hp: 60
     factor_hp: 1
   - id: 14
     maxlv: 20
-    min_cost: 90
-    max_cost: 1000
+    min_cost: 150
+    max_cost: 1700
     factor_cost: 1
     min_range: 5
-    max_range: 10
+    max_range: 18
     factor_range: 1
     min_attack_speed: 2
     max_attack_speed: 1
@@ -287,19 +248,16 @@ MonoBehaviour:
     min_damage: 5
     max_damage: 30
     factor_damage: 1
-    min_power_skill: 4
-    max_power_skill: 20
-    factor_power_skill: 1
-    min_hp: 15
-    max_hp: 50
+    min_hp: 25
+    max_hp: 60
     factor_hp: 1
   - id: 15
     maxlv: 20
-    min_cost: 90
-    max_cost: 1000
+    min_cost: 150
+    max_cost: 1700
     factor_cost: 1
     min_range: 5
-    max_range: 10
+    max_range: 18
     factor_range: 1
     min_attack_speed: 2
     max_attack_speed: 1
@@ -307,9 +265,6 @@ MonoBehaviour:
     min_damage: 5
     max_damage: 30
     factor_damage: 1
-    min_power_skill: 4
-    max_power_skill: 20
-    factor_power_skill: 1
-    min_hp: 15
-    max_hp: 50
+    min_hp: 25
+    max_hp: 60
     factor_hp: 1

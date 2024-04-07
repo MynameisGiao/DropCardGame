@@ -56,7 +56,7 @@ public class IngameView : BaseView
     }
     IEnumerator LoopStamina()
     {
-        WaitForSeconds wait = new WaitForSeconds(1.5f);
+        WaitForSeconds wait = new WaitForSeconds(1.2f);
         while (true)
         {
             yield return wait;

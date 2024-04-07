@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Configuration;
 using DG.DemiLib.External;
 using UnityEngine;
 
@@ -14,7 +15,7 @@ public class DeckUIControl : MonoBehaviour
     private void OnDisable()
     {
         DataTrigger.UnRegisterValueChange(DataSchema.DECK, DeckDataChange);
-        DataTrigger.UnRegisterValueChange(DataSchema.DIC_UNIT, DeckDataChange);
+        DataTrigger.RegisterValueChange(DataSchema.DIC_UNIT, DeckDataChange);
     }
     private void DeckDataChange(object data)
     {

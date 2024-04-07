@@ -13,9 +13,8 @@ public class EN_DeadState : FSM_State
         base.Enter();
         parent.dataBinding.Dead = true;
     }
-    public override void OnAnimExit()
+    public override void OnAnimMiddle()
     {
-        base.OnAnimExit();
         parent.OnDead();
     }
 }

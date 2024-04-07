@@ -40,4 +40,8 @@ public class DeckCollectionControl : MonoBehaviour
             items[i].Setup(lsUnit_cf[i]);
         }
     }
+    void Update()
+    {
+
+    }
 }

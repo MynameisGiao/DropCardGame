@@ -42,7 +42,7 @@ AnimatorStateMachine:
     m_Position: {x: 270, y: -70, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4196223916231879953}
-    m_Position: {x: 146.88675, y: 256.69, z: 0}
+    m_Position: {x: 130, y: 260, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6551817215293772801}
     m_Position: {x: 540, y: -130, z: 0}
@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _system: {fileID: 0}
-  time_middle: 0
+  time_middle: 1.3
 --- !u!1102 &4196223916231879953
 AnimatorState:
   serializedVersion: 6

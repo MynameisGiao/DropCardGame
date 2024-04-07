@@ -37,6 +37,7 @@ public class DeckIngameItemControl : MonoBehaviour, IBeginDragHandler, IDragHand
     private bool isDraging;
     private ConfigUnitLevelRecord cf_level;
 
+    public TMP_Text level_lb;
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (lockObj.activeSelf)
@@ -124,6 +125,11 @@ public class DeckIngameItemControl : MonoBehaviour, IBeginDragHandler, IDragHand
         stamina_lb.text= config_unit.Stamina.ToString();
         cooldown_lb.text=config_unit.Cool_down.ToString();
         cf_level = ConfigManager.instance.configUnitLevel.GetRecordByKeySearch(config_unit.ID);
+        if (cur_UnitData.level < cf_level.Maxlv)
+            level_lb.text = "Lv " + cur_UnitData.level.ToString();
+        else
+            level_lb.text = "MAX LV ";
+        
         for (int i = 0; i < rare_objects.Length; i++)
         {
             rare_objects[i].SetActive(i + 1 == (int)config_unit.Rare);
@@ -133,6 +139,7 @@ public class DeckIngameItemControl : MonoBehaviour, IBeginDragHandler, IDragHand
         rect_item_drag = item_drag.GetComponent<RectTransform>();
         lockObj.SetActive(true);
         lock_cd.SetActive(false);
+       
     }
     private void OnStaminaChange(int stamina)
     {

@@ -56,6 +56,6 @@ public class ConfigScene : BYSingletonMono<ConfigScene>
     {
         range_mark_unit.gameObject.SetActive(isValid);
         range_mark_unit.position = pos;
-        range_mark_unit.localScale = Vector3.one*2 * range;
+        range_mark_unit.localScale = Vector3.one * range;
     }
 }

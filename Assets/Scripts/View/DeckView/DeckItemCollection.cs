@@ -34,7 +34,7 @@ public class DeckItemCollection : MonoBehaviour
         {
             ConfigUnitLevelRecord cf_level = ConfigManager.instance.configUnitLevel.GetRecordByKeySearch(cf.ID);
             if (data.level < cf_level.Maxlv)
-                level_lb.text = "Lv: " + data.level.ToString();
+                level_lb.text = "Lv " + data.level.ToString();
             else
                 level_lb.text = "Max lv";
 

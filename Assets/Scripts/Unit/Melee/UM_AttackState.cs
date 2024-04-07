@@ -8,7 +8,7 @@ public class UM_AttackState : FSM_State
 {
     [NonSerialized]
     public UnitMeleeControl parent;
-    public Transform trans_e;
+    private Transform trans_e;
     private EnemyControl enemy_control;
     private int damageData;
     public float speed;
@@ -17,8 +17,9 @@ public class UM_AttackState : FSM_State
     private bool isAttacking;
     public override void Enter(object data)
     {
-        Debug.LogError("Attack Staste");
+
         trans_e = (Transform)data;
+        enemy_control= trans_e.GetComponent<EnemyControl>();
         ConfigUnitLevelRecord cf_level = parent.data.configUnit_lv;
         int lv = parent.data.unitData.level;
         damageData = cf_level.GetDamage(lv);
@@ -27,6 +28,7 @@ public class UM_AttackState : FSM_State
         parent.u_agent.isStopped = false;
         parent.u_agent.speed = speed;
         cur_speed_anim = 0;
+        isAttacking = false;
       
        
     }
@@ -36,9 +38,13 @@ public class UM_AttackState : FSM_State
         if (trans_e == null)
         {
             parent.GotoState(parent.guardState);
-            return;
+           
         }
-        if (!isAttacking)
+        else if (enemy_control.hp <= 0)
+        {
+            parent.GotoState(parent.guardState);
+        }
+        else if (!isAttacking)
         {
             float dis = Vector3.Distance(parent.trans.position, trans_e.position);
 
@@ -93,8 +99,7 @@ public class UM_AttackState : FSM_State
     public override void OnAnimMiddle()
     {
         base.OnAnimMiddle();
-        trans_e.GetComponent<EnemyControl>().OnDamage(damageData);
-        Debug.LogError("AnimMiddle " + damageData);
+       enemy_control.OnDamage(damageData);
        
     }
     public override void OnAnimExit()
@@ -103,10 +108,10 @@ public class UM_AttackState : FSM_State
         isAttacking = false;
        
     }
-
     public override void Exit()
     {
-       
+        isAttacking = false;
         parent.u_agent.isStopped = false;
+        parent.u_agent.speed = speed;
     }
 }

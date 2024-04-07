@@ -8,7 +8,7 @@ public class EN_AttackUnitState   : FSM_State
 {
     [NonSerialized]
     public EnemyNormalControl parent;
-    private Transform target_unit;
+    public Transform target_unit;
     public float speed;
     private float cur_speed_anim;
     private float delay_check =0;
@@ -21,6 +21,7 @@ public class EN_AttackUnitState   : FSM_State
         parent.agent.speed = speed;
         cur_speed_anim = 0;
         delay_check = 0;
+        isAttacking = false;
         parent.agent.stoppingDistance = parent.range_attack;
     }
 
@@ -110,6 +111,7 @@ public class EN_AttackUnitState   : FSM_State
     {
         base.Exit();
         parent.agent.isStopped = false;
+        isAttacking = false;
     
     }
 }

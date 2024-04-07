@@ -45,6 +45,7 @@ public class InfoUnitDialog : BaseDialog
     }
     private void UpdateData(object dataChange)
     {
+        int lv = 1;
         gold = DataController.instance.GetGold();
         cf_unit_lv = ConfigManager.instance.configUnitLevel.GetRecordByKeySearch(dl_param.cf_unit.ID);
         config_unit = dl_param.cf_unit;
@@ -63,19 +64,19 @@ public class InfoUnitDialog : BaseDialog
         data = DataController.instance.GetUnitData(config_unit.ID);
         if (data != null)
         {
-
-            int damage = cf_unit_lv.GetDamage(data.level);
-            int hp = cf_unit_lv.GetHP(data.level);
-            level_lb.text = "Level: " + data.level.ToString();
+            lv = data.level;
+            int damage = cf_unit_lv.GetDamage(lv);
+            int hp = cf_unit_lv.GetHP(lv);
+            level_lb.text = "Level: " + lv.ToString();
             damage_lb.text = "Damage: " + damage.ToString();
             hp_lb.text = "Hp: " + hp.ToString();
             btn_upgrade.gameObject.SetActive(true);
             btn_unlock.gameObject.SetActive(false);
             
-            int costLvNext = cf_unit_lv.GetCost(data.level+1);
+            int costLvNext = cf_unit_lv.GetCost(lv +1);
             cost_lb.text=costLvNext.ToString();
             btn_upgrade.interactable = gold >= costLvNext;
-            if(data.level >= cf_unit_lv.Maxlv)
+            if(lv >= cf_unit_lv.Maxlv)
             {
                 level_lb.text = "MAX LEVEL";
                 btn_upgrade.gameObject.SetActive(false);
@@ -84,6 +85,7 @@ public class InfoUnitDialog : BaseDialog
         }
         else // data == null
         {
+            lv = 1;
             level_lb.text = "Level: 1";
             damage_lb.text = "Damage: " +cf_unit_lv.GetDamage(1).ToString();
             hp_lb.text = "Hp: " + cf_unit_lv.GetHP(1).ToString();

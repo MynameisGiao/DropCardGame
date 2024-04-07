@@ -21,15 +21,14 @@ public class UnitMeleeControl : UnitControl
     
     public override void OnDamage(int damage_e)
     {
-        //hp -= damageData.damage;
-        //if(hp<=0)
-        //{
-        //    if(cur_State!=deadState)
-        //    {
-        //        GotoState(deadState);
-        //    }
-        //}
-        //base.OnDamage(damageData);
-        //Debug.LogError("Unit take damage"+ damage_e);
+        hp -= damage_e;
+        if (hp <= 0)
+        {
+            if (cur_State != deadState)
+            {
+                GotoState(deadState);
+            }
+        }
+       
     }
 }

@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
+using UnityEditor;
 using UnityEngine;
-using static UnityEngine.ParticleSystem;
-using UnityEngine.UI;
 [Serializable]
 public class UM_GuardState : FSM_State
 { 
@@ -16,8 +14,7 @@ public class UM_GuardState : FSM_State
     private Coroutine coroutine_dt;
 
     public override void Enter()
-    {
-        base.Enter();
+    {        
         parent.u_agent.Warp(parent.trans.position);
         parent.u_agent.isStopped = false;
         parent.u_agent.speed = speed;
@@ -34,6 +31,7 @@ public class UM_GuardState : FSM_State
         base.FixedUpdate();
         Vector3 dir = parent.u_agent.steeringTarget - parent.trans.position;
         float speed_anim = parent.u_agent.velocity.magnitude / parent.u_agent.speed;
+        parent.dataBinding.Speed = cur_speed_anim;
         cur_speed_anim = Mathf.Lerp(cur_speed_anim, speed_anim * speed, Time.deltaTime * 5);
         dir.Normalize();
         if (dir.magnitude > 0)
@@ -42,7 +40,7 @@ public class UM_GuardState : FSM_State
             parent.trans.rotation = Quaternion.Slerp(parent.trans.rotation, q, Time.deltaTime * 120);
         }
        
-        parent.dataBinding.Speed = cur_speed_anim;
+       
     }
     IEnumerator LoopMove()
     {
@@ -93,9 +91,6 @@ public class UM_GuardState : FSM_State
     public override void Exit()
     {
         base.Exit();
-        parent.u_agent.isStopped = true;
-        parent.dataBinding.Speed = 0;
-        parent.u_agent.isStopped = true;
         if (coroutine_ != null)
             parent.StopCoroutine(coroutine_);
         coroutine_ = null;

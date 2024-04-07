@@ -12,10 +12,6 @@ public class UM_DeadState : FSM_State
         base.Enter();
         parent.dataBinding.Dead = true;
     }
-    public override void OnAnimExit()
-    {
-        //base.OnAnimExit();
-    }
     public override void OnAnimMiddle()
     {
         parent.OnDead();
