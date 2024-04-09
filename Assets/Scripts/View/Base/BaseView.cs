@@ -47,8 +47,5 @@ public class BaseView : MonoBehaviour
 
     }
 
-    internal void OnWaveChange(int arg1, int arg2)
-    {
-        throw new NotImplementedException();
-    }
+    
 }

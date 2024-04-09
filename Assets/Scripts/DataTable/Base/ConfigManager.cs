@@ -13,6 +13,7 @@ public class ConfigManager : BYSingletonMono<ConfigManager>
     public ConfigUnitLevel configUnitLevel;
     public void InitConfig(Action callback)
     {
+        ;
         StartCoroutine(ProgressLoadConfig(callback));
     }
     IEnumerator ProgressLoadConfig(Action callback)

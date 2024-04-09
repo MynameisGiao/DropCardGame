@@ -36,6 +36,7 @@ public class DeckEquipItemControl : MonoBehaviour
     }
     public void OnSelect()
     {
+    
         DialogManager.instance.HideDialog(DialogIndex.DeckEquipDialog);
         DataController.instance.ChangeDeck(cur_UnitData, index);
     }

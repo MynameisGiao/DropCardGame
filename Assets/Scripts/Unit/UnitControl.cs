@@ -49,7 +49,7 @@ public class UnitControl : FSM_System
         IngameView ingameView = (IngameView)ViewManager.instance.cur_view;
         hub_trans.transform.SetParent(ingameView.parent_hub, false);
         hpHub = hub_trans.GetComponent<HPHub>();
-        hpHub.Setup(anchor_hub, ingameView.parent_hub,Color.green);
+        hpHub.SetUp(anchor_hub, ingameView.parent_hub,Color.green);
     }
 
        

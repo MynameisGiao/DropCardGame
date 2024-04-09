@@ -10,7 +10,10 @@ public enum DialogIndex
     SettingDialog=4,
     RenameDialog=5,
     DeckEquipDialog=6,
-    InfoUnitDialog=7
+    InfoUnitDialog=7,
+    DailyDialog=8,
+    RewardDialog=9,
+
 }
 public class DialogParam
 {
@@ -42,6 +45,8 @@ public class DialogConfig
       DialogIndex.SettingDialog,
       DialogIndex.RenameDialog,
       DialogIndex.DeckEquipDialog,
-      DialogIndex.InfoUnitDialog
+      DialogIndex.InfoUnitDialog,
+      DialogIndex.DailyDialog,
+      DialogIndex.RewardDialog
     };
 }

@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor.VersionControl;
+#endif
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+
 
 public class MissionManager : BYSingletonMono<MissionManager>
 {
@@ -15,19 +18,20 @@ public class MissionManager : BYSingletonMono<MissionManager>
     private int total_enemy;
     private int count_enemy_create;
     public UnityEvent <int, int> OnWaveChange;
-
     private int hp = 50;
     private int max_hp = 50;
     public  UnityEvent<int, int> OnBaseHpChange;
+
 
     private bool isEndMission = false;
    
     // Start is called before the first frame update
     IEnumerator Start()
     {
+      
         cf_mission = GameManager.instance.cur_cf_mission;
         waves = cf_mission.Waves;
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(10);
         StopCoroutine("CreateNewWave");
         StartCoroutine("CreateNewWave");
     }
@@ -44,6 +48,7 @@ public class MissionManager : BYSingletonMono<MissionManager>
             WinDialogParam param = new WinDialogParam();
             param.cf_mission = cf_mission;
             DialogManager.instance.ShowDialog(DialogIndex.WinDialog, param);
+           
         }
         else
         {
@@ -51,9 +56,9 @@ public class MissionManager : BYSingletonMono<MissionManager>
             total_enemy = cf_wave.Enemies.Count;
             count_enemy_create = 0;
             number_enemy_dead = 0;
-
-            yield return new WaitForSeconds(cf_wave.Time_Delay);
             OnWaveChange?.Invoke(index_wave + 1, waves.Count);
+            yield return new WaitForSeconds(cf_wave.Time_Delay);
+           
 
             for (int i = 0; i < cf_wave.Enemies.Count; i++)
             {
@@ -94,7 +99,7 @@ public class MissionManager : BYSingletonMono<MissionManager>
         total_enemy = 0;
         count_enemy_create = 0;
         StopAllCoroutines();
-        StartCoroutine(Start());
+        StartCoroutine("Start");
     }
 
     // base chịu damageData từ enemy

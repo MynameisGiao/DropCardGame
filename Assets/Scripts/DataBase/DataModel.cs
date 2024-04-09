@@ -58,8 +58,8 @@ public class DataModel : MonoBehaviour
             playerData.info = info;
 
             PlayerInventory inventory = new PlayerInventory();
-            inventory.gold = 500;
-            inventory.gem = 100;
+            inventory.gold = 500000;
+            inventory.gem = 1000;
             Dictionary<string, UnitData> dic = new Dictionary<string, UnitData>();
             foreach (UnitData unit in deck)
             {

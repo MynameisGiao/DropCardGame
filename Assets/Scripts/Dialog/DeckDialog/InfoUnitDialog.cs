@@ -109,6 +109,7 @@ public class InfoUnitDialog : BaseDialog
     }
     public void OnUnlock()
     {
+       
         DataController.instance.UnlockUnit(cf_unit_lv, ()=> 
         { 
             

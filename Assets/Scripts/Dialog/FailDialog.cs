@@ -21,6 +21,7 @@ public class FailDialog : BaseDialog
     {
         DialogManager.instance.HideDialog(dialogIndex);
         ViewManager.instance.SwitchView(ViewIndex.EmptyView);
+        MusicManager.instance.OnPlayMusic(MusicType.bg_1);
         LoadSceneManager.instance.LoadSceneByIndex(1, () =>
         {
             ViewManager.instance.SwitchView(ViewIndex.MissionView);

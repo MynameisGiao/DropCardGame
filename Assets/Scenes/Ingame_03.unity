@@ -5089,6 +5089,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 618658584}
+  - component: {fileID: 618658585}
   m_Layer: 7
   m_Name: TownScreenshot
   m_TagString: Untagged
@@ -5310,6 +5311,14 @@ Transform:
   - {fileID: 1982879590}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &618658585
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618658583}
+  m_Enabled: 1
 --- !u!1001 &619922038
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6566,6 +6575,12 @@ MonoBehaviour:
     waves: 
     reward_1: 0
     reward_2: 0
+  OnWaveChange:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBaseHpChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &802395611
 Transform:
   m_ObjectHideFlags: 0
@@ -9959,7 +9974,7 @@ MonoBehaviour:
   limit_left: {fileID: 817895920}
   limit_right: {fileID: 1395054680}
   trans_cam: {fileID: 380764981}
-  sensity: 0.1
+  sensity: 0.01
   speed: 15
 --- !u!1001 &1269464381
 PrefabInstance:

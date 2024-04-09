@@ -10,6 +10,7 @@ public class BootLoader : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
         yield return new WaitForSeconds(1);
+        MusicManager.instance.OnPlayMusic(MusicType.bg_1);
         ConfigManager.instance.InitConfig(InitData);
        
     }

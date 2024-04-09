@@ -24,7 +24,6 @@ public class ConfigScene : BYSingletonMono<ConfigScene>
     {
         if (enemy_spawns.Count == 0)
         {
-            Debug.LogError("No enemy spawn points available!");
             return null;
         }
 
@@ -33,7 +32,6 @@ public class ConfigScene : BYSingletonMono<ConfigScene>
 
         if (availableSpawnPoints.Count == 0)
         {
-            Debug.LogWarning("All enemy spawn points have been used. Reusing points...");
             usedSpawnPoints.Clear();
             availableSpawnPoints = new List<Transform>(enemy_spawns);
         }
@@ -54,7 +52,6 @@ public class ConfigScene : BYSingletonMono<ConfigScene>
         //return targets[index];
         if (targets.Count == 0)
         {
-            Debug.LogError("No enemy spawn points available!");
             return null;
         }
 
@@ -63,7 +60,6 @@ public class ConfigScene : BYSingletonMono<ConfigScene>
 
         if (availableTargetPoints.Count == 0)
         {
-            Debug.LogWarning("All enemy spawn points have been used. Reusing points...");
             usedTargetPoints.Clear();
             availableTargetPoints = new List<Transform>(targets);
         }
@@ -81,6 +77,6 @@ public class ConfigScene : BYSingletonMono<ConfigScene>
     {
         range_mark_unit.gameObject.SetActive(isValid);
         range_mark_unit.position = pos;
-        range_mark_unit.localScale = Vector3.one * range;
+        range_mark_unit.localScale = Vector3.one * range *2;
     }
 }

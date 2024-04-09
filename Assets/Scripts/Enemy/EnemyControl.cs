@@ -37,7 +37,7 @@ public class EnemyControl : FSM_System
         IngameView ingameView= (IngameView)ViewManager.instance.cur_view;
         hub_trans.transform.SetParent(ingameView.parent_hub,false);
         hp_hub= hub_trans.GetComponent<HPHub>();
-        hp_hub.Setup(anchor_hub, ingameView.parent_hub, Color.red);
+        hp_hub.SetUp(anchor_hub, ingameView.parent_hub, Color.red);
 
     }
 

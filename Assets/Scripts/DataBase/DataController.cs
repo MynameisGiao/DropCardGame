@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Xml;
-using Newtonsoft.Json;
-using UnityEngine;
 
 public class DataController : BYSingletonMono<DataController>
 {
@@ -22,6 +18,23 @@ public class DataController : BYSingletonMono<DataController>
     {
         PlayerInfo info = dataModel.ReadData<PlayerInfo>(DataSchema.INFO);
         return info;
+
+    }
+
+    public PlayerMissionData GetMissionData()
+    {
+        PlayerMissionData mission_data= dataModel.ReadData<PlayerMissionData>(DataSchema.MISSION_DATA);
+        return mission_data;
+    }
+    public int GetCurMissionData()
+    {
+        return dataModel.ReadData<int>(DataSchema.CUR_MISSION);
+    }
+    public void UnpdateCurMissonData(int cur_data)
+    {
+        PlayerMissionData missionData = GetMissionData();
+        missionData.cur_mission= cur_data;
+        dataModel.UpdateData(DataSchema.MISSION_DATA, missionData);
 
     }
     public int GetGem()
@@ -171,4 +184,5 @@ public class DataController : BYSingletonMono<DataController>
         dataModel.UpdateData(DataSchema.DECK, deck);
     }
 
+   
 }

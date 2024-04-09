@@ -12,6 +12,9 @@ public class DataSchema
     public const string GEM = "inventory/gem";   
     public const string DIC_UNIT = "inventory/dic_unit";
     public const string DECK = "info/deck";
+    public const string MISSION_DATA = "mission_data";
+    public const string CUR_MISSION = "mission_data/cur_mission";
+  
 }
 [Serializable]
 public class PlayerData

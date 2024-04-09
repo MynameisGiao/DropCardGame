@@ -50,12 +50,14 @@ public class DeckItemCollection : MonoBehaviour
     }
     public void OnShowInfo()
     {
+       
         InfoUnitDialogParam param = new InfoUnitDialogParam { cf_unit = config_unit };
         DialogManager.instance.ShowDialog(DialogIndex.InfoUnitDialog, param);
 
     }
     public void OnEquip()
     {
+       
         DeckEquipDialogParam param = new DeckEquipDialogParam();
         param.unitData = data;
         DialogManager.instance.ShowDialog(DialogIndex.DeckEquipDialog, param);

@@ -21,22 +21,22 @@ public class HPHub : MonoBehaviour
     {
         cam = Camera.main;
     }
-    public void Setup(Transform anchor_world, RectTransform parent_rect, Color color)
+    public void SetUp(Transform anchor_world, RectTransform parent_rect, Color color)
     {
         this.anchor_world = anchor_world;
         this.parent_rect = parent_rect;
         hp_fg.color = color;
     }
+    // Start is called before the first frame update
     void Start()
     {
 
     }
     public void UpdateHP(int cur_hp, int max_hp)
     {
-        time_hide = 2;
-        cur_value=(float)cur_hp /(float)max_hp;
+        time_hide = 1;
+        cur_value = (float)cur_hp / (float)max_hp;
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -44,11 +44,11 @@ public class HPHub : MonoBehaviour
         group_hp.SetActive(time_hide > 0);
 
         Vector2 screenPoint = cam.WorldToScreenPoint(anchor_world.position);
-        Vector2 local_point;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(parent_rect, screenPoint, null, out local_point);
-        rect_trans.anchoredPosition = local_point;
+        Vector2 localPoint;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(parent_rect, screenPoint, null, out localPoint);
+        rect_trans.anchoredPosition = localPoint;
 
-        hp_value=Mathf.Lerp(hp_value,cur_value, Time.deltaTime *2);
+        hp_value = Mathf.Lerp(hp_value, cur_value, Time.deltaTime * 2);
         hp_fg.fillAmount = hp_value;
     }
     public void OnDetachHub()
@@ -60,11 +60,12 @@ public class HPHub : MonoBehaviour
         cur_value = 1;
         hp_value = 1;
         hp_fg.fillAmount = 1;
-        group_hp.gameObject.SetActive(false);
+        group_hp.SetActive(false);
     }
     public void OnDespawn()
     {
-        group_hp.gameObject.SetActive(false);
+
+        group_hp.SetActive(false);
     }
 }
 

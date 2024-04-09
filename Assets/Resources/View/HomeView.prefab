@@ -4257,7 +4257,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8158221557049895203}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4230766347509671496}
+        m_TargetAssemblyTypeName: HomeView, Assembly-CSharp
+        m_MethodName: ShowRewardDialog
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6168705648933113279
 GameObject:
   m_ObjectHideFlags: 0
@@ -4857,7 +4869,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1087199506609717167}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4230766347509671496}
+        m_TargetAssemblyTypeName: HomeView, Assembly-CSharp
+        m_MethodName: ShowDailyDialog
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7923527494989418954
 GameObject:
   m_ObjectHideFlags: 0

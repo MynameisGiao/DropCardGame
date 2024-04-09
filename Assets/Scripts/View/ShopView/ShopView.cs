@@ -28,6 +28,7 @@ public class ShopView : BaseView
     }
     public void OnBack()
     {
+        SoundManager.instance.OnPlayButtonSound();
         ViewManager.instance.SwitchView(ViewIndex.HomeView);
     }
 }

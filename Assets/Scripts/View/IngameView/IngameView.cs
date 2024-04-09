@@ -19,8 +19,7 @@ public class IngameView : BaseView
     public RectTransform parent_hub; 
 
     public Image hp_base_fg;
-    private int previousHp;
-    private int previousMaxHp;
+
 
     public override void Setup(ViewParam param)
     {
@@ -59,9 +58,7 @@ public class IngameView : BaseView
 
     private void OnWaveChange(int arg1, int arg2)
     {
-        wave_lb.text = "WAVE: " + arg1.ToString() + " / " + arg2.ToString();
-        
-      
+        wave_lb.text = "WAVE: " + arg1.ToString() + "/" + arg2.ToString();
     }
 
     public override void OnHideView()
@@ -71,7 +68,7 @@ public class IngameView : BaseView
     }
     IEnumerator LoopStamina()
     {
-        WaitForSeconds wait = new WaitForSeconds(1.2f);
+        WaitForSeconds wait = new WaitForSeconds(1.5f);
         while (true)
         {
             yield return wait;

@@ -16,6 +16,7 @@ public class DeckView : BaseView
     }
     public void OnBack()
     {
+        SoundManager.instance.OnPlayButtonSound();
         ViewManager.instance.SwitchView(ViewIndex.HomeView);
     }
 }

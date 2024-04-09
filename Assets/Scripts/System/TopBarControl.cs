@@ -1,9 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Data.Common;
-using DG.Tweening;
+﻿using DG.Tweening;
 using TMPro;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -106,6 +102,10 @@ public class TopBarControl : MonoBehaviour
     public void ShowRenameDialog()
     {
         DialogManager.instance.ShowDialog(DialogIndex.RenameDialog);
+    }
+    public void ShowSettingDialog ()
+    {
+        DialogManager.instance.ShowDialog(DialogIndex.SettingDialog);
     }
     private void DataNameChange(object data)
     {

@@ -1317,6 +1317,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 185337639}
+  - component: {fileID: 185337640}
   m_Layer: 7
   m_Name: BG
   m_TagString: Untagged
@@ -1516,6 +1517,14 @@ Transform:
   - {fileID: 948991033}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &185337640
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185337638}
+  m_Enabled: 1
 --- !u!1001 &189154753
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10272,7 +10281,7 @@ MonoBehaviour:
   limit_left: {fileID: 817895920}
   limit_right: {fileID: 1395054680}
   trans_cam: {fileID: 1180510983}
-  sensity: 0.1
+  sensity: 0.01
   speed: 15
 --- !u!1001 &1266172378
 PrefabInstance:
@@ -13868,6 +13877,12 @@ MonoBehaviour:
     waves: 
     reward_1: 0
     reward_2: 0
+  OnWaveChange:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBaseHpChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1891103385
 Transform:
   m_ObjectHideFlags: 0
