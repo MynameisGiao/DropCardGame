@@ -9,6 +9,8 @@ public class WinDialog : BaseDialog
     public TMP_Text gem_lb;
     private int mission_done;
     private int cur_mission;
+
+    public static bool check_done = false;
     public override void OnShowDialog()
     {
         base.OnShowDialog();
@@ -38,13 +40,21 @@ public class WinDialog : BaseDialog
     {
         if (mission_done == cur_mission)
         {
-            cur_mission++;
+
+            if (cur_mission < 7)
+            {
+                cur_mission++;
+                DataController.instance.UnpdateCurMissonData(cur_mission);
+            }
+            else if (cur_mission == 7)
+                check_done = true;
+            
         }
         int coin = int.Parse(coin_lb.text);
         int gem = int.Parse(gem_lb.text);
         DataController.instance.AddGold(coin);
         DataController.instance.AddGem(gem);
-        DataController.instance.UnpdateCurMissonData(cur_mission);
+       
         DialogManager.instance.HideDialog(dialogIndex);
        
         ViewManager.instance.SwitchView(ViewIndex.EmptyView);

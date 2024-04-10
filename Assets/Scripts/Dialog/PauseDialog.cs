@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using UnityEngine;
 
 public class PauseDialog : BaseDialog
@@ -25,6 +26,9 @@ public class PauseDialog : BaseDialog
     }
     public void OnBack()
     {
+        MissionManager.instance.OnBaseHpChange.RemoveAllListeners();
+        MissionManager.instance.OnWaveChange.RemoveAllListeners();
+        BYPoolManager.instance.GetPool("HPHub").DeSpawnAll();
         DialogManager.instance.HideDialog(dialogIndex);
         LoadSceneManager.instance.LoadSceneByIndex(1, () =>
         {
@@ -38,9 +42,14 @@ public class PauseDialog : BaseDialog
     }
     public void OnRestart()
     {
+        BYPoolManager.instance.GetPool("HPHub").DeSpawnAll();
         DialogManager.instance.HideDialog(dialogIndex);
+        ViewManager.instance.SwitchView(ViewIndex.EmptyView);
+        LoadSceneManager.instance.LoadSceneByIndex(1, () =>
+        {
+            ViewManager.instance.SwitchView(ViewIndex.IngameView);
+        });
         LoadSceneManager.instance.ReloadCurrentScene();
-        ViewManager.instance.SwitchView(ViewIndex.IngameView);
         MissionManager.instance.StartMission();
     }
 }

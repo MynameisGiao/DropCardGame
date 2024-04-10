@@ -24,11 +24,23 @@ public class RewardView : BaseView
         cur_mission = DataController.instance.GetCurMissionData();
         cur_reward = DataController.instance.GetCurReward();
        
-        for (int i = 0; i < cur_mission - 1; i++)
+        if(WinDialog.check_done != true)
         {
-            buttons[i].interactable = true;
+            for (int i = 0; i < cur_mission - 1; i++)
+            {
+                buttons[i].interactable = true;
 
+            }
         }
+        else
+        {
+            for (int i = 0; i < cur_mission ; i++)
+            {
+                buttons[i].interactable = true;
+
+            }
+        }
+        
         if (cur_reward > 0)
         {
             for (int j = 0; j < cur_reward; j++)

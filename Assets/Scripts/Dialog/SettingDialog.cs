@@ -46,6 +46,7 @@ public class SettingDialog : BaseDialog
         if (showPauseDialog)
         {
             DialogManager.instance.ShowDialog(DialogIndex.PauseDialog);
+            showPauseDialog=false;
         }
     }
 }

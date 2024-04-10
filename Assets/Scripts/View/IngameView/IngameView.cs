@@ -31,8 +31,10 @@ public class IngameView : BaseView
         {
             deck_items[i].Setup(decks[i],this);
         }
+        StopCoroutine("LoopStamina");
         stamina = 0;
-        stamina_lb.text=stamina.ToString();
+        stamina_lb.text = stamina.ToString();
+
     }
    
     public void OnPause()
@@ -44,9 +46,9 @@ public class IngameView : BaseView
     {
         hp_base_fg.fillAmount = 1;
         MissionManager.instance.OnWaveChange.AddListener(OnWaveChange);
-        StartCoroutine("LoopStamina");
         MissionManager.instance.OnBaseHpChange.AddListener(OnBaseHpChange);
-        
+        StartCoroutine("LoopStamina");
+
     }
 
     private void OnBaseHpChange(int hp, int maxhp)
