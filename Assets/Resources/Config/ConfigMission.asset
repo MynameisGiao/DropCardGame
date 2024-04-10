@@ -59,6 +59,6 @@ MonoBehaviour:
     stage: 7
     name: commotion night
     sceneName: Ingame_04
-    waves: 8;9;8;9
+    waves: 8;9;8;9;9
     reward_1: 1000
     reward_2: 200

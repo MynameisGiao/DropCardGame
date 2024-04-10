@@ -64,36 +64,36 @@ MonoBehaviour:
   - id: 9
     name: Cavalry_1
     prefab: E_009
-    damage: 6
-    hp: 24
+    damage: 10
+    hp: 30
     attack_rate: 3
   - id: 10
     name: Cavalry_2
     prefab: E_010
-    damage: 6
-    hp: 24
+    damage: 10
+    hp: 30
     attack_rate: 3
   - id: 11
     name: Cavalry_Spear
     prefab: E_011
-    damage: 6
-    hp: 26
+    damage: 10
+    hp: 30
     attack_rate: 3
   - id: 12
     name: Cavalry_King_1
     prefab: E_012
-    damage: 10
-    hp: 20
+    damage: 13
+    hp: 40
     attack_rate: 3
   - id: 13
     name: Cavalry_King_2
     prefab: E_013
-    damage: 10
-    hp: 30
+    damage: 13
+    hp: 40
     attack_rate: 3
   - id: 14
     name: Cavalry_King_3
     prefab: E_014
-    damage: 10
-    hp: 30
+    damage: 13
+    hp: 40
     attack_rate: 3
