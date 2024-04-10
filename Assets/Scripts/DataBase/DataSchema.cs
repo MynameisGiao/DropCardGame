@@ -7,6 +7,7 @@ public class DataSchema
 {
     public const string INFO = "info";
     public const string NAME = "info/nickname";
+    public const string REWARD = "info/reward";
     public const string INVENTORY = "inventory";
     public const string GOLD = "inventory/gold";
     public const string GEM = "inventory/gem";   
@@ -32,6 +33,7 @@ public class PlayerInfo
 {
     public string nickname;
     public int level;
+    public int reward;
     //public int exp;
     [SerializeField]
     public List<UnitData> deck=new List<UnitData>();

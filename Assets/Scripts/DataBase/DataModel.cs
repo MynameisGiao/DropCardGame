@@ -54,12 +54,13 @@ public class DataModel : MonoBehaviour
             PlayerInfo info = new PlayerInfo();
             info.nickname = "PlayerName";
             info.level = 1;
+            info.reward = 0;
             info.deck = deck;
             playerData.info = info;
 
             PlayerInventory inventory = new PlayerInventory();
-            inventory.gold = 500000;
-            inventory.gem = 1000;
+            inventory.gold = 200;
+            inventory.gem = 50;
             Dictionary<string, UnitData> dic = new Dictionary<string, UnitData>();
             foreach (UnitData unit in deck)
             {

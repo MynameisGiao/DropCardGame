@@ -36,6 +36,7 @@ public class MissionView : BaseView
         mission_choose = cf_mission.ID;
         GameManager.instance.cur_cf_mission = cf_mission;
         Debug.LogError("Scene name: " + cf_mission.SceneName);
+        MusicManager.instance.OnPlayMusic(MusicType.bg_2);
         LoadSceneManager.instance.LoadSceneByName(cf_mission.SceneName, () =>
         {
             ViewManager.instance.SwitchView(ViewIndex.IngameView);

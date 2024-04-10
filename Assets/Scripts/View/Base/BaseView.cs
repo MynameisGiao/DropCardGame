@@ -15,7 +15,10 @@ public class BaseView : MonoBehaviour
     {
 
     }
-  
+    public virtual void Setup()
+    {
+
+    }
     private void HideView(Action callback)
     {
         viewAnimation.OnHideAnimation(() =>

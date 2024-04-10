@@ -33,9 +33,8 @@ public class PauseDialog : BaseDialog
     }
     public void OnSettingDialog()
     {
-        DialogManager.instance.HideDialog(dialogIndex);
         DialogManager.instance.ShowDialog(DialogIndex.SettingDialog, new SettingDialogParam { isShowPause = true });
-      
+
     }
     public void OnRestart()
     {

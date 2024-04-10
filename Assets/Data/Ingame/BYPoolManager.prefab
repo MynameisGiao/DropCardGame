@@ -45,6 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pools:
-  - total: 20
+  - total: 50
     name_pool: HPHub
     prefab: {fileID: 2158189447089277713, guid: 0662f316b9277d641b9fc237dc49ad4d, type: 3}

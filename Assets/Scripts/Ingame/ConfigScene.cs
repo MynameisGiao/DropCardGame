@@ -27,7 +27,6 @@ public class ConfigScene : BYSingletonMono<ConfigScene>
             return null;
         }
 
-        // Lọc những điểm spawn chưa được sử dụng
         List<Transform> availableSpawnPoints = enemy_spawns.Except(usedSpawnPoints).ToList();
 
         if (availableSpawnPoints.Count == 0)
@@ -35,12 +34,8 @@ public class ConfigScene : BYSingletonMono<ConfigScene>
             usedSpawnPoints.Clear();
             availableSpawnPoints = new List<Transform>(enemy_spawns);
         }
-
-        // Chọn một điểm spawn ngẫu nhiên từ những điểm còn lại
         int index = UnityEngine.Random.Range(0, availableSpawnPoints.Count);
         Transform selectedSpawnPoint = availableSpawnPoints[index];
-
-        // Đánh dấu điểm spawn đã được sử dụng
         usedSpawnPoints.Add(selectedSpawnPoint);
 
         return selectedSpawnPoint;
@@ -54,8 +49,6 @@ public class ConfigScene : BYSingletonMono<ConfigScene>
         {
             return null;
         }
-
-        // Lọc những điểm spawn chưa được sử dụng
         List<Transform> availableTargetPoints = targets.Except(usedTargetPoints).ToList();
 
         if (availableTargetPoints.Count == 0)
@@ -63,12 +56,8 @@ public class ConfigScene : BYSingletonMono<ConfigScene>
             usedTargetPoints.Clear();
             availableTargetPoints = new List<Transform>(targets);
         }
-
-        // Chọn một điểm spawn ngẫu nhiên từ những điểm còn lại
         int index = UnityEngine.Random.Range(0, availableTargetPoints.Count);
         Transform selectedTargetPoint = availableTargetPoints[index];
-
-        // Đánh dấu điểm spawn đã được sử dụng
         usedTargetPoints.Add(selectedTargetPoint);
 
         return selectedTargetPoint;
@@ -77,6 +66,6 @@ public class ConfigScene : BYSingletonMono<ConfigScene>
     {
         range_mark_unit.gameObject.SetActive(isValid);
         range_mark_unit.position = pos;
-        range_mark_unit.localScale = Vector3.one * range *2;
+        range_mark_unit.localScale = Vector3.one * range *1.5f;
     }
 }

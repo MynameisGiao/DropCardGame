@@ -1665,7 +1665,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2552601745518611308}
   - {fileID: 2552601743877741968}
   - {fileID: 2552601744697365051}
   - {fileID: 2552601743863322471}
@@ -1673,7 +1672,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 26, y: 0}
+  m_AnchoredPosition: {x: 26, y: -68}
   m_SizeDelta: {x: 250, y: 757.8684}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &2552601744704278591
@@ -3202,7 +3201,7 @@ RectTransform:
   - {fileID: 2552601743908939117}
   - {fileID: 2552601744650812303}
   - {fileID: 6330460541362299821}
-  m_Father: {fileID: 2552601744704278584}
+  m_Father: {fileID: 1480020622213043070}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4260,7 +4259,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4230766347509671496}
         m_TargetAssemblyTypeName: HomeView, Assembly-CSharp
-        m_MethodName: ShowRewardDialog
+        m_MethodName: ShowRewardView
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4747,6 +4746,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   view_index: 2
+  notice_reward: {fileID: 465469489281345980}
 --- !u!1 &7498380545754497376
 GameObject:
   m_ObjectHideFlags: 0
@@ -4765,7 +4765,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &651887876508794550
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4783,10 +4783,10 @@ RectTransform:
   - {fileID: 4862419567895855547}
   m_Father: {fileID: 1480020622213043070}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 200, y: -440}
+  m_SizeDelta: {x: 190, y: 190}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &8422012063256550948
 CanvasRenderer:
@@ -4912,6 +4912,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2283656040868821049}
+  - {fileID: 2552601745518611308}
   - {fileID: 651887876508794550}
   m_Father: {fileID: 7728136188948151527}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

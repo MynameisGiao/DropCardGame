@@ -29,13 +29,20 @@ public class DataController : BYSingletonMono<DataController>
     public int GetCurMissionData()
     {
         return dataModel.ReadData<int>(DataSchema.CUR_MISSION);
+    }public int GetCurReward()
+    {
+        return dataModel.ReadData<int>(DataSchema.REWARD);
     }
     public void UnpdateCurMissonData(int cur_data)
     {
         PlayerMissionData missionData = GetMissionData();
         missionData.cur_mission= cur_data;
         dataModel.UpdateData(DataSchema.MISSION_DATA, missionData);
-
+    }public void UnpdateCurReward(int cur_reward)
+    {
+        PlayerInfo playerInfo = GetPlayerInfo();
+        playerInfo.reward= cur_reward;
+        dataModel.UpdateData(DataSchema.INFO, playerInfo);
     }
     public int GetGem()
     {

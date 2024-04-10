@@ -46,6 +46,7 @@ public class WinDialog : BaseDialog
         DataController.instance.AddGem(gem);
         DataController.instance.UnpdateCurMissonData(cur_mission);
         DialogManager.instance.HideDialog(dialogIndex);
+       
         ViewManager.instance.SwitchView(ViewIndex.EmptyView);
         MusicManager.instance.OnPlayMusic(MusicType.bg_1);
         LoadSceneManager.instance.LoadSceneByIndex(1, () =>

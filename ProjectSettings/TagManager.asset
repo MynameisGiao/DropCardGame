@@ -14,8 +14,8 @@ TagManager:
   - Enemy
   - Ground
   - Unit
-  - 
-  - 
+  - Obstacle
+  - UnitDrop
   - 
   - 
   - 

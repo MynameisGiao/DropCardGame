@@ -31,7 +31,7 @@ public class MissionManager : BYSingletonMono<MissionManager>
       
         cf_mission = GameManager.instance.cur_cf_mission;
         waves = cf_mission.Waves;
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(8);
         StopCoroutine("CreateNewWave");
         StartCoroutine("CreateNewWave");
     }

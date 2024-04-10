@@ -9,12 +9,14 @@ public enum ViewIndex
     IngameView=3,
     MissionView=4,
     DeckView=5,
-    ShopView=6
+    ShopView=6,
+    RewardView=7
 }
 public class ViewParam
 {
 
 }
+
 public class ViewConfig
 {
     public static ViewIndex[] viewIndices =
@@ -25,6 +27,7 @@ public class ViewConfig
             ViewIndex.MissionView,
             ViewIndex.DeckView,
             ViewIndex.ShopView,
+            ViewIndex.RewardView,
     };
 
 }

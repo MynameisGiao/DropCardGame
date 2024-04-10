@@ -11,8 +11,6 @@ public enum DialogIndex
     RenameDialog=5,
     DeckEquipDialog=6,
     InfoUnitDialog=7,
-    DailyDialog=8,
-    RewardDialog=9,
 
 }
 public class DialogParam
@@ -46,7 +44,6 @@ public class DialogConfig
       DialogIndex.RenameDialog,
       DialogIndex.DeckEquipDialog,
       DialogIndex.InfoUnitDialog,
-      DialogIndex.DailyDialog,
-      DialogIndex.RewardDialog
+
     };
 }

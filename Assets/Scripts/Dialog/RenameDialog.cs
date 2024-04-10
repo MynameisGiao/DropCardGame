@@ -31,6 +31,7 @@ public class RenameDialog : BaseDialog
 
     public void OnClose()
     {
+        
         DialogManager.instance.HideDialog(dialogIndex);
     }
 }
