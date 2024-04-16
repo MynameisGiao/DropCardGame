@@ -30,6 +30,7 @@ public class PauseDialog : BaseDialog
         MissionManager.instance.OnWaveChange.RemoveAllListeners();
         BYPoolManager.instance.GetPool("HPHub").DeSpawnAll();
         DialogManager.instance.HideDialog(dialogIndex);
+        MusicManager.instance.OnPlayMusic(MusicType.bg_1);
         LoadSceneManager.instance.LoadSceneByIndex(1, () =>
         {
             ViewManager.instance.SwitchView(ViewIndex.MissionView);
