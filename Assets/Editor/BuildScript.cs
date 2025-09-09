@@ -2,9 +2,18 @@ using UnityEditor;
 
 public class BuildScript
 {
-    public static void BuildAndroid()
+    [MenuItem("Build/Build Android APK")]
+    static void BuildGame()
     {
-        string pathToDeploy = "Build/Android/CitadelDefense.apk"; // Đường dẫn lưu APK
-        BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, pathToDeploy, BuildTarget.Android, BuildOptions.None);
+        string[] scenes = {
+            "Assets/Scenes/Boot.unity",
+            "Assets/Scenes/Buffer.unity",
+            "Assets/Scenes/Ingame_01.unity",
+            "Assets/Scenes/Ingame_02.unity",
+            "Assets/Scenes/Ingame_03.unity",
+            "Assets/Scenes/Ingame_04.unity",
+        };  // Đường dẫn tới các scene cần build
+        string path = "Builds/Android/CitadelDefense.apk";  // Đường dẫn lưu file APK sau khi build
+        BuildPipeline.BuildPlayer(scenes, path, BuildTarget.Android, BuildOptions.None);
     }
 }
