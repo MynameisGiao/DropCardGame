@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 
-public static class BYDataTableMaker
+public static class DataTableMaker
 {
     [MenuItem("Assets/BY/Create Binanry file from Tab Delimiter(text file)", false, 1)]
     public static void CreateBinaryFile()
@@ -19,7 +19,7 @@ public static class BYDataTableMaker
             AssetDatabase.CreateAsset(sc_ab, "Assets/Resources/Config/" + table_name + ".asset");
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
-            BYDataImport bYDataImport = (BYDataImport)sc_ab;
+            DataImport bYDataImport = (DataImport)sc_ab;
             bYDataImport.CreateBinaryFile(csv_file);
             EditorUtility.SetDirty(bYDataImport);
 

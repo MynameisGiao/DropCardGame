@@ -9,12 +9,12 @@ public class ConfigEnemyRecord
     // id   name    prefab  damage  hp
     [SerializeField]
     private int id;
-    public int ID 
-    {  
-        get 
+    public int ID
+    {
+        get
         {
-            return id; 
-        } 
+            return id;
+        }
     }
     [SerializeField]
     private string name;
@@ -62,7 +62,7 @@ public class ConfigEnemyRecord
         }
     }
 }
-public class ConfigEnemy : BYDataTable<ConfigEnemyRecord>
+public class ConfigEnemy : DataTable<ConfigEnemyRecord>
 {
     public override ConfigCompare<ConfigEnemyRecord> DefindCompare()
     {

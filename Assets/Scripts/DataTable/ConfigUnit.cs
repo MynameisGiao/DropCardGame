@@ -7,9 +7,9 @@ using UnityEngine;
 
 public enum CardRare
 {
-    COMMON=1,
-    EPIC=2,
-    LEGENDARY=3
+    COMMON = 1,
+    EPIC = 2,
+    LEGENDARY = 3
 }
 [Serializable]
 public class ConfigUnitRecord
@@ -80,40 +80,40 @@ public class ConfigUnitRecord
         }
     }
 }
-public class ConfigUnit : BYDataTable<ConfigUnitRecord>
+public class ConfigUnit : DataTable<ConfigUnitRecord>
 {
     public override ConfigCompare<ConfigUnitRecord> DefindCompare()
     {
         configCompare = new ConfigCompare<ConfigUnitRecord>("id");
         return configCompare;
     }
-    
+
     public List<ConfigUnitRecord> GetUnitConfigCollection()
     {
         // lấy ra danh sách các file config có id không thuộc decks
 
         List<UnitData> decks = DataController.instance.GetDeck();
 
-        List<ConfigUnitRecord> ls= new List<ConfigUnitRecord>();
-        foreach(ConfigUnitRecord x in records)
+        List<ConfigUnitRecord> ls = new List<ConfigUnitRecord>();
+        foreach (ConfigUnitRecord x in records)
         {
             bool isInDecks = false;
-            foreach(UnitData d in decks)
+            foreach (UnitData d in decks)
             {
-                if(d.id == x.ID) // thuộc decks
+                if (d.id == x.ID) // thuộc decks
                 {
                     isInDecks = true;
                     break;
                 }
             }
-            if(isInDecks == false)
+            if (isInDecks == false)
                 ls.Add(x);
         }
         return ls;
-       
-       // linQ
-       //return records.Where(x => decks.Where(d => d.id == x.ID).Count() == 0).ToList();
+
+        // linQ
+        //return records.Where(x => decks.Where(d => d.id == x.ID).Count() == 0).ToList();
     }
 
-    
+
 }

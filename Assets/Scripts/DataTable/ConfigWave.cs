@@ -55,7 +55,7 @@ public class ConfigWaveRecord
         }
     }
 }
-public class ConfigWave : BYDataTable<ConfigWaveRecord>
+public class ConfigWave : DataTable<ConfigWaveRecord>
 {
     public override ConfigCompare<ConfigWaveRecord> DefindCompare()
     {

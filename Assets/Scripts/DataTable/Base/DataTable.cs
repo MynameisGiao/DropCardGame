@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.U2D;
 
-public class BYDataImport : ScriptableObject
+public class DataImport : ScriptableObject
 {
     public virtual void CreateBinaryFile(TextAsset csv_file)
     {
@@ -49,7 +49,7 @@ public class ConfigCompare<T> : IComparer<T> where T : class, new()
         return key;
     }
 }
-public abstract class BYDataTable<T> : BYDataImport where T : class, new()
+public abstract class DataTable<T> : DataImport where T : class, new()
 {
     public List<T> records = new List<T>();
     protected ConfigCompare<T> configCompare;

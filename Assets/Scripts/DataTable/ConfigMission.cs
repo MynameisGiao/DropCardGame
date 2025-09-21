@@ -47,7 +47,7 @@ public class ConfigMissionRecord
     }
     [SerializeField]
     private string waves;
-     public List<int> Waves
+    public List<int> Waves
     {
         get
         {
@@ -60,7 +60,7 @@ public class ConfigMissionRecord
             return ls;
         }
     }
-    
+
     [SerializeField]
     private int reward_1;
     public int Reward_1
@@ -80,12 +80,12 @@ public class ConfigMissionRecord
         }
     }
 }
-public class ConfigMission : BYDataTable<ConfigMissionRecord>
+public class ConfigMission : DataTable<ConfigMissionRecord>
 {
     public override ConfigCompare<ConfigMissionRecord> DefindCompare()
     {
-        configCompare=new ConfigCompare<ConfigMissionRecord>("id");
+        configCompare = new ConfigCompare<ConfigMissionRecord>("id");
         return configCompare;
     }
 }
-   
+

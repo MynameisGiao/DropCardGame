@@ -5,7 +5,7 @@ using UnityEngine;
 [Serializable]
 public class ConfigShopRecord
 {
-   // id name    image price   value shop_type
+    // id name    image price   value shop_type
 
     [SerializeField]
     private int id;
@@ -62,7 +62,7 @@ public class ConfigShopRecord
         }
     }
 }
-public class ConfigShop : BYDataTable<ConfigShopRecord>
+public class ConfigShop : DataTable<ConfigShopRecord>
 {
     public override ConfigCompare<ConfigShopRecord> DefindCompare()
     {
