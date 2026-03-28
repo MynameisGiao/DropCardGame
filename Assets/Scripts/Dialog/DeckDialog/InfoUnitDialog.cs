@@ -13,7 +13,6 @@ public class InfoUnitDialog : BaseDialog
     public TMP_Text name_lb;
     public TMP_Text level_lb;
     public TMP_Text skill_lb;
-    public TMP_Text rare_lb;
     public TMP_Text damage_lb;
     public TMP_Text hp_lb;
     public Button btn_unlock;
@@ -51,7 +50,6 @@ public class InfoUnitDialog : BaseDialog
         config_unit = dl_param.cf_unit;
         name_lb.text = config_unit.Name.ToUpper();
         skill_lb.text = "Skill: " + config_unit.Skill;
-        rare_lb.text = "Rare: " + config_unit.Rare.ToString();
         stamina_lb.text= config_unit.Stamina.ToString();
         cooldown_lb.text= config_unit.Cool_down.ToString();
        
