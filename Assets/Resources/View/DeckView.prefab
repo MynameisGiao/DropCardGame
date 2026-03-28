@@ -1085,7 +1085,6 @@ GameObject:
   - component: {fileID: 3453005579233129649}
   - component: {fileID: 7020696721105114288}
   - component: {fileID: 596062297128649084}
-  - component: {fileID: 3127060302585449925}
   m_Layer: 0
   m_Name: DeckView
   m_TagString: Untagged
@@ -1136,27 +1135,6 @@ MonoBehaviour:
   view_index: 5
   deckUIControl: {fileID: 500372546992250252}
   deckCollectionControl: {fileID: 4514739267363140637}
---- !u!95 &3127060302585449925
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6766140285900105957}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: faf1587a2a9a45e42b81e24f4af232e9, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7894868318435858764
 GameObject:
   m_ObjectHideFlags: 0

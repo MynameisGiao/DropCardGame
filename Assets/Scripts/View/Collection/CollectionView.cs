@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class DeckView : BaseView
+public class CollectionView : BaseView
 {
-    public DeckUIControl deckUIControl;
-    public DeckStorageControl deckCollectionControl;
+    public CollectionControl collectionControl;
     public override void Setup(ViewParam param)
     {
         base.Setup(param);
-        deckUIControl.Setup();
-        deckCollectionControl.Setup();
+        collectionControl.Setup();
 
     }
     public void OnBack()
@@ -20,3 +18,4 @@ public class DeckView : BaseView
         ViewManager.instance.SwitchView(ViewIndex.HomeView);
     }
 }
+

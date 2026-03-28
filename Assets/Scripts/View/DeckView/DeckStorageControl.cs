@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeckCollectionControl : MonoBehaviour
+public class DeckStorageControl : MonoBehaviour
 {
     public Transform parent_item;
-    public DeckItemCollection prefab;
+    public DeckItemStorage prefab;
  
-    private List<DeckItemCollection> items= new List<DeckItemCollection>();
+    private List<DeckItemStorage> items= new List<DeckItemStorage>();
 
     private void OnEnable()
     {
@@ -30,7 +30,7 @@ public class DeckCollectionControl : MonoBehaviour
         {
             for(int i=0; i<lsUnit_cf.Count; i++)
             {
-                DeckItemCollection item= Instantiate(prefab);
+                DeckItemStorage item= Instantiate(prefab);
                 item.transform.SetParent(parent_item,false);
                 items.Add(item);
             }

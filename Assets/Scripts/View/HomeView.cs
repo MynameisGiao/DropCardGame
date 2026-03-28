@@ -30,6 +30,11 @@ public class HomeView : BaseView
         SoundManager.instance.OnPlayButtonSound();
         ViewManager.instance.SwitchView(ViewIndex.DeckView);
     }
+        public void ShowCollectionView()
+    {
+        SoundManager.instance.OnPlayButtonSound();
+        ViewManager.instance.SwitchView(ViewIndex.CollectionView);
+    }
     public void ShowShopView()
     {
         SoundManager.instance.OnPlayButtonSound();

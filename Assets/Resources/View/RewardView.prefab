@@ -7888,7 +7888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21779fcff2773604bb63af1758e54184, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  view_index: 7
+  view_index: 8
   reward_lb:
   - {fileID: 2816554066685623091}
   - {fileID: 8587343810095429221}
