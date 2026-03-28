@@ -91,14 +91,14 @@ MonoBehaviour:
     cool_down: 6
     skill: SingleTwoHandSword
   - id: 12
-    name: Grainne
+    name: Grane
     prefab: U_012
     rare: 3
     stamina: 7
     cool_down: 7
     skill: SwordShield
   - id: 13
-    name: Galvin
+    name: Gavin
     prefab: U_013
     rare: 3
     stamina: 7

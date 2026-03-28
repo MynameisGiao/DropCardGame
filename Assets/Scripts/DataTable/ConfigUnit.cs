@@ -96,6 +96,20 @@ public class ConfigUnit : DataTable<ConfigUnitRecord>
     {
         return records;
     }
+        public List<ConfigUnitRecord> GetLegendaryUnits()
+    {
+        return records.Where(x => x.Rare == CardRare.LEGENDARY).ToList();
+    }
+
+    public List<ConfigUnitRecord> GetEpicUnits()
+    {
+        return records.Where(x => x.Rare == CardRare.EPIC).ToList();
+    }
+
+    public List<ConfigUnitRecord> GetCommonUnits()
+    {
+        return records.Where(x => x.Rare == CardRare.COMMON).ToList();
+    }
 
     public List<ConfigUnitRecord> GetUnitConfigCollection()
     {

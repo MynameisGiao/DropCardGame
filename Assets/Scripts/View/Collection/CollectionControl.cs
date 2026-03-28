@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,41 +6,60 @@ using UnityEngine;
 public class CollectionControl : MonoBehaviour
 {
     public Transform parent_item;
-    public DeckItemStorage prefab;
+    public ItemCollection prefab;
  
-    private List<DeckItemStorage> items= new List<DeckItemStorage>();
+    private List<ItemCollection> items= new List<ItemCollection>();
 
-    private void OnEnable()
+    public void SetupUnits(TypeCollection type)
     {
-        DataTrigger.RegisterValueChange(DataSchema.DECK, DeckDataChange);
-        DataTrigger.RegisterValueChange(DataSchema.DIC_UNIT, DeckDataChange);
+        switch (type)
+        {
+            case TypeCollection.All:
+                List<ConfigUnitRecord> lsUnit_cf= ConfigManager.instance.configUnit.GetAllUnits();
+                SetupUnitsFromList(lsUnit_cf);
+                break;
+            case TypeCollection.Legendary:
+                List<ConfigUnitRecord> lsLegendary = ConfigManager.instance.configUnit.GetLegendaryUnits();
+                SetupUnitsFromList(lsLegendary);
+                break;
+            case TypeCollection.Epic:
+                List<ConfigUnitRecord> lsEpic = ConfigManager.instance.configUnit.GetEpicUnits();
+                SetupUnitsFromList(lsEpic);
+                break;
+            case TypeCollection.Common:
+                List<ConfigUnitRecord> lsCommon = ConfigManager.instance.configUnit.GetCommonUnits();
+                SetupUnitsFromList(lsCommon);
+                break;
+        }
     }
-    private void OnDisable()
+    public void SetupUnitsFromList(List<ConfigUnitRecord> lsUnit_cf)
     {
-        DataTrigger.UnRegisterValueChange(DataSchema.DECK, DeckDataChange);
-        DataTrigger.UnRegisterValueChange(DataSchema.DIC_UNIT, DeckDataChange);
-    }
-    private void DeckDataChange(object data)
-    {
-        Setup();
-    }
-    public void Setup()
-    {
-        List<ConfigUnitRecord> lsUnit_cf= ConfigManager.instance.configUnit.GetAllUnits();
+        
         if(items.Count <= 0)
         {
             for(int i=0; i<lsUnit_cf.Count; i++)
             {
-                DeckItemStorage item= Instantiate(prefab);
+                ItemCollection item= Instantiate(prefab);
                 item.transform.SetParent(parent_item,false);
                 items.Add(item);
             }
         }
-        for(int i=0; i<lsUnit_cf.Count;i++)
+        
+        // Setup only the items we need and disable the rest
+        for(int i=0; i<items.Count; i++)
         {
-            items[i].Setup(lsUnit_cf[i]);
+            if(i < lsUnit_cf.Count)
+            {
+                items[i].gameObject.SetActive(true);
+                items[i].Setup(lsUnit_cf[i]);
+            }
+            else
+            {
+                items[i].gameObject.SetActive(false);
+            }
         }
     }
+       
     void Update()
     {
 
