@@ -12,6 +12,7 @@ public class DataSchema
     public const string GOLD = "inventory/gold";
     public const string GEM = "inventory/gem";   
     public const string DIC_UNIT = "inventory/dic_unit";
+    public const string DIC_UNIT_EX_DECK = "inventory/dic_unit_ex_deck";
     public const string DECK = "info/deck";
     public const string MISSION_DATA = "mission_data";
     public const string CUR_MISSION = "mission_data/cur_mission";
@@ -45,6 +46,8 @@ public class PlayerInventory
     public int gem;
     [SerializeField]
     public Dictionary<string,UnitData> dic_unit= new Dictionary<string, UnitData>();
+    [SerializeField]
+    public Dictionary<string,UnitData> dic_unit_ex_deck= new Dictionary<string, UnitData>();
 }
 [Serializable]
 public class PlayerMissionData

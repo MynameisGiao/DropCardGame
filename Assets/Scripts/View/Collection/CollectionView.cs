@@ -8,6 +8,20 @@ public class CollectionView : BaseView
     public CollectionControl collectionControl;
     private ButtonTypeCollection[] _typeButtons;
 
+    private void OnEnable()
+    {
+        DataTrigger.RegisterValueChange(DataSchema.DECK, DeckDataChange);
+        DataTrigger.RegisterValueChange(DataSchema.DIC_UNIT, DeckDataChange);
+    }
+    private void OnDisable()
+    {
+        DataTrigger.UnRegisterValueChange(DataSchema.DECK, DeckDataChange);
+        DataTrigger.UnRegisterValueChange(DataSchema.DIC_UNIT, DeckDataChange);
+    }
+    private void DeckDataChange(object data)
+    {
+        Setup();
+    }
     public override void Setup(ViewParam param)
     {
         base.Setup(param);

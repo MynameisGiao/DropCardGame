@@ -25,6 +25,7 @@ public class InfoUnitDialog : BaseDialog
     private ConfigUnitLevelRecord cf_unit_lv;
     private InfoUnitDialogParam dl_param;
     private UnitData data;
+    private CollectionView collectionView;
 
     int gold;
     public override void Setup(DialogParam param)
@@ -96,13 +97,21 @@ public class InfoUnitDialog : BaseDialog
     }
     public void OnClose()
     {
+        // Trigger data change event to notify CollectionView to refresh
+        Dictionary<string, UnitData> dic_units = DataController.instance.dataModel
+            .ReadData<Dictionary<string, UnitData>>(DataSchema.DIC_UNIT);
+        if (dic_units != null)
+        {
+            dic_units.TriggerEventData(DataSchema.DIC_UNIT);
+        }
+        
         DialogManager.instance.HideDialog(dialogIndex);
     }
     public void OnUpgrade()
     {
         DataController.instance.UpgradeUnit(cf_unit_lv, () =>
         {
-
+            RefreshCollectionView();
         });
     }
     public void OnUnlock()
@@ -110,7 +119,17 @@ public class InfoUnitDialog : BaseDialog
        
         DataController.instance.UnlockUnit(cf_unit_lv, ()=> 
         { 
-            
+            RefreshCollectionView();
         });
+    }
+    
+    private void RefreshCollectionView()
+    {
+        // Trigger data change event to notify CollectionView to refresh
+        collectionView = FindObjectOfType<CollectionView>();
+        if (collectionView != null)
+        {
+            collectionView.Setup(null);
+        }
     }
 }
