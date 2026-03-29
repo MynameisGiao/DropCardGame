@@ -1040,7 +1040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbac8ac8440b0024f87a214139fb6875, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  view_index: 6
+  view_index: 7
   parent_item: {fileID: 2931337523617335279}
   prefab_item: {fileID: 5899778933058934636, guid: 7b683538119d2994cb2a4c82fafe6fc5, type: 3}
 --- !u!1 &7800776023653095282

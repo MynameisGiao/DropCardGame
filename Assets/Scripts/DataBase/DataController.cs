@@ -151,6 +151,7 @@ public class DataController : BYSingletonMono<DataController>
                 gold -= min_cost;
                 dataModel.UpdateData(DataSchema.GOLD, gold);
                 dataModel.UpdateDicData<UnitData>(DataSchema.DIC_UNIT, unitData.id.Tokey(), unitData);
+                dataModel.UpdateDicData<UnitData>(DataSchema.DIC_UNIT_EX_DECK, unitData.id.Tokey(), unitData);
 
             }
         }
@@ -173,23 +174,76 @@ public class DataController : BYSingletonMono<DataController>
                     gold -= costlevel_next;
                     dataModel.UpdateData(DataSchema.GOLD, gold);
                     dataModel.UpdateDicData<UnitData>(DataSchema.DIC_UNIT, unitData.id.Tokey(), unitData);
-
+                    
+                    // Nếu unit nằm trong deck, cập nhật lại deck; nếu không, cập nhật DIC_UNIT_EX_DECK
+                    List<UnitData> deck = GetDeck();
+                    bool isInDeck = deck.Exists(u => u.id == unitData.id);
+                    if (!isInDeck)
+                    {
+                        dataModel.UpdateDicData<UnitData>(DataSchema.DIC_UNIT_EX_DECK, unitData.id.Tokey(), unitData);
+                    }
+                    else
+                    {
+                        // Unit nằm trong deck, cập nhật lại deck
+                        for (int i = 0; i < deck.Count; i++)
+                        {
+                            if (deck[i].id == unitData.id)
+                            {
+                                deck[i] = unitData;
+                                break;
+                            }
+                        }
+                        dataModel.UpdateData(DataSchema.DECK, deck);
+                    }
                 }
             }
 
         }
         callback();
     }
+
+    
     public List<UnitData> GetDeck()
     {
         return dataModel.ReadData<List<UnitData>>(DataSchema.DECK);
     }
+
     public void ChangeDeck(UnitData unitData, int index)
     {
         List<UnitData> deck = dataModel.ReadData<List<UnitData>>(DataSchema.DECK);
+        Dictionary<string, UnitData> dic_unit_ex_deck = dataModel.ReadData<Dictionary<string, UnitData>>(DataSchema.DIC_UNIT_EX_DECK);
+        
+        // Lấy unit cũ đang ở vị trí này
+        UnitData oldUnitData = deck[index];
+        
+        // Thay unit mới vào deck
         deck[index] = unitData;
         dataModel.UpdateData(DataSchema.DECK, deck);
+        
+        // Cập nhật dic_unit_ex_deck
+        // Thêm unit cũ vào (vì nó ra khỏi deck)
+        dic_unit_ex_deck[oldUnitData.id.Tokey()] = oldUnitData;
+        
+        // Xóa unit mới khỏi (vì nó vào deck rồi)
+        if (dic_unit_ex_deck.ContainsKey(unitData.id.Tokey()))
+        {
+            dic_unit_ex_deck.Remove(unitData.id.Tokey());
+        }
+        
+        dataModel.UpdateData(DataSchema.DIC_UNIT_EX_DECK, dic_unit_ex_deck);
+    }
+    public List<UnitData> GetAllUnlockedUnits()
+    {
+        Dictionary<string, UnitData> dic_units = dataModel.ReadData<Dictionary<string, UnitData>>(DataSchema.DIC_UNIT);
+        List<UnitData> unlocked_units = new List<UnitData>(dic_units.Values);
+        return unlocked_units;
+    }
+    public List<UnitData> GetUnlockedUnitsExcludeDeck()
+    {
+        Dictionary<string, UnitData> dic_units = dataModel.ReadData<Dictionary<string, UnitData>>(DataSchema.DIC_UNIT_EX_DECK);
+        List<UnitData> unlocked_units = new List<UnitData>(dic_units.Values);
+        return unlocked_units;
     }
 
-   
+
 }

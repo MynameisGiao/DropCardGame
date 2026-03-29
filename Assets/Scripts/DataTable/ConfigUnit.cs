@@ -88,6 +88,29 @@ public class ConfigUnit : DataTable<ConfigUnitRecord>
         return configCompare;
     }
 
+    /// <summary>
+    /// Trả về tất cả các unit - kể cả thuộc Deck
+    /// </summary>
+    /// <returns>Danh sách tất cả ConfigUnitRecord</returns>
+    public List<ConfigUnitRecord> GetAllUnits()
+    {
+        return records;
+    }
+        public List<ConfigUnitRecord> GetLegendaryUnits()
+    {
+        return records.Where(x => x.Rare == CardRare.LEGENDARY).ToList();
+    }
+
+    public List<ConfigUnitRecord> GetEpicUnits()
+    {
+        return records.Where(x => x.Rare == CardRare.EPIC).ToList();
+    }
+
+    public List<ConfigUnitRecord> GetCommonUnits()
+    {
+        return records.Where(x => x.Rare == CardRare.COMMON).ToList();
+    }
+
     public List<ConfigUnitRecord> GetUnitConfigCollection()
     {
         // lấy ra danh sách các file config có id không thuộc decks
@@ -114,6 +137,8 @@ public class ConfigUnit : DataTable<ConfigUnitRecord>
         // linQ
         //return records.Where(x => decks.Where(d => d.id == x.ID).Count() == 0).ToList();
     }
+
+
 
 
 }

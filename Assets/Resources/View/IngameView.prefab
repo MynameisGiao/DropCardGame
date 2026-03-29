@@ -282,8 +282,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 71.357, y: 10.044}
-  m_SizeDelta: {x: 1776.6349, y: 389.1789}
+  m_AnchoredPosition: {x: 71.357, y: 79.065155}
+  m_SizeDelta: {x: 1776.6349, y: 528.2331}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6713729038727108063
 CanvasRenderer:
@@ -338,10 +338,10 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 50
+    m_Top: 80
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 30
+  m_Spacing: 40
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0

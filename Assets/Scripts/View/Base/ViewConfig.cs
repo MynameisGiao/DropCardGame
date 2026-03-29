@@ -9,8 +9,9 @@ public enum ViewIndex
     IngameView=3,
     MissionView=4,
     DeckView=5,
-    ShopView=6,
-    RewardView=7
+    CollectionView=6,
+    ShopView=7,
+    RewardView=8
 }
 public class ViewParam
 {
@@ -26,6 +27,7 @@ public class ViewConfig
             ViewIndex.IngameView,
             ViewIndex.MissionView,
             ViewIndex.DeckView,
+            ViewIndex.CollectionView,
             ViewIndex.ShopView,
             ViewIndex.RewardView,
     };

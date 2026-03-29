@@ -13,7 +13,6 @@ public class InfoUnitDialog : BaseDialog
     public TMP_Text name_lb;
     public TMP_Text level_lb;
     public TMP_Text skill_lb;
-    public TMP_Text rare_lb;
     public TMP_Text damage_lb;
     public TMP_Text hp_lb;
     public Button btn_unlock;
@@ -26,6 +25,7 @@ public class InfoUnitDialog : BaseDialog
     private ConfigUnitLevelRecord cf_unit_lv;
     private InfoUnitDialogParam dl_param;
     private UnitData data;
+    private CollectionView collectionView;
 
     int gold;
     public override void Setup(DialogParam param)
@@ -51,7 +51,6 @@ public class InfoUnitDialog : BaseDialog
         config_unit = dl_param.cf_unit;
         name_lb.text = config_unit.Name.ToUpper();
         skill_lb.text = "Skill: " + config_unit.Skill;
-        rare_lb.text = "Rare: " + config_unit.Rare.ToString();
         stamina_lb.text= config_unit.Stamina.ToString();
         cooldown_lb.text= config_unit.Cool_down.ToString();
        
@@ -98,13 +97,21 @@ public class InfoUnitDialog : BaseDialog
     }
     public void OnClose()
     {
+        // Trigger data change event to notify CollectionView to refresh
+        Dictionary<string, UnitData> dic_units = DataController.instance.dataModel
+            .ReadData<Dictionary<string, UnitData>>(DataSchema.DIC_UNIT);
+        if (dic_units != null)
+        {
+            dic_units.TriggerEventData(DataSchema.DIC_UNIT);
+        }
+        
         DialogManager.instance.HideDialog(dialogIndex);
     }
     public void OnUpgrade()
     {
         DataController.instance.UpgradeUnit(cf_unit_lv, () =>
         {
-
+            RefreshCollectionView();
         });
     }
     public void OnUnlock()
@@ -112,7 +119,17 @@ public class InfoUnitDialog : BaseDialog
        
         DataController.instance.UnlockUnit(cf_unit_lv, ()=> 
         { 
-            
+            RefreshCollectionView();
         });
+    }
+    
+    private void RefreshCollectionView()
+    {
+        // Trigger data change event to notify CollectionView to refresh
+        collectionView = FindObjectOfType<CollectionView>();
+        if (collectionView != null)
+        {
+            collectionView.Setup(null);
+        }
     }
 }

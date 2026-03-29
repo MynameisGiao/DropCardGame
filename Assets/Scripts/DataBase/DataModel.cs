@@ -67,6 +67,8 @@ public class DataModel : MonoBehaviour
                 dic.Add(unit.id.Tokey(), unit); ;
             }
             inventory.dic_unit = dic;
+            inventory.dic_unit_ex_deck = new Dictionary<string, UnitData>(); // khởi tạo = 0
+
             playerData.inventory = inventory;
 
             PlayerMissionData missionData = new PlayerMissionData();
