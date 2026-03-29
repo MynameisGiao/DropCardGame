@@ -1197,7 +1197,7 @@ GameObject:
   - component: {fileID: 4260673474944652564}
   - component: {fileID: 4152109857508575651}
   m_Layer: 0
-  m_Name: DeckItemCollection
+  m_Name: DeckItemStorage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -6,13 +6,10 @@ using UnityEngine;
 public class DeckView : BaseView
 {
     public DeckUIControl deckUIControl;
-    public DeckStorageControl deckCollectionControl;
     public override void Setup(ViewParam param)
     {
         base.Setup(param);
         deckUIControl.Setup();
-        deckCollectionControl.Setup();
-
     }
     public void OnBack()
     {
