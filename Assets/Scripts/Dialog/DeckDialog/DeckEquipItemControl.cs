@@ -65,7 +65,6 @@ public class DeckEquipItemControl : MonoBehaviour
             selectedUnitData.TriggerEventData(DataSchema.DECK);
             selectedUnitData.TriggerEventData(DataSchema.DIC_UNIT_EX_DECK);
             DialogManager.instance.HideDialog(DialogIndex.DeckEquipDialog);
-            Debug.Log("Selected unit: " + config_unit.Name);
         }
         else
         {

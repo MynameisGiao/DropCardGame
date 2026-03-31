@@ -11,9 +11,11 @@ public class UM_DeadState : FSM_State
     {
         base.Enter();
         parent.dataBinding.Dead = true;
+        MissionManager.instance.OnUnitDead();
     }
     public override void OnAnimMiddle()
     {
         parent.OnDead();
+
     }
 }
