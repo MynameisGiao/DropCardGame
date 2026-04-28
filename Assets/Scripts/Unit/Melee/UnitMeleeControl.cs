@@ -22,8 +22,9 @@ public class UnitMeleeControl : UnitControl
     public override void OnDamage(int damage_e)
     {
         hp -= damage_e;
-        if (hp <= 0)
+        if (hp <= 0  && !isDead)
         {
+            isDead = true;
             if (cur_State != deadState)
             {
                 GotoState(deadState);

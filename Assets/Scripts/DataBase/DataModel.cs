@@ -44,7 +44,7 @@ public class DataModel : MonoBehaviour
 {
     private PlayerData playerData;
     public List<UnitData> deck;
-    public static bool check ;
+    public static bool check;
 
     public void InitData(Action callback)
     {
@@ -59,8 +59,8 @@ public class DataModel : MonoBehaviour
             playerData.info = info;
 
             PlayerInventory inventory = new PlayerInventory();
-            inventory.gold = 200;
-            inventory.gem = 10;
+            inventory.gold = 200000;
+            inventory.gem = 100;
             Dictionary<string, UnitData> dic = new Dictionary<string, UnitData>();
             foreach (UnitData unit in deck)
             {
@@ -230,5 +230,5 @@ public class DataModel : MonoBehaviour
         PlayerPrefs.SetString("LOCAL_DATA", s_data);
     }
 
-    
+
 }

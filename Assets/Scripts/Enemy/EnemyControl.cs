@@ -26,22 +26,32 @@ public class EnemyControl : FSM_System
     public virtual void Setup(EnemyInitData enemyInitData)
     {
         trans = transform;
-        agent=gameObject.GetComponent<NavMeshAgent>();
+        agent = gameObject.GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.Warp(trans.position);
-        cf=enemyInitData.cf;
-        hp=cf.Hp;
-        damage=cf.Damage;
+        cf = enemyInitData.cf;
+        hp = cf.Hp;
+        damage = cf.Damage;
+
 
         Transform hub_trans = BYPoolManager.instance.GetPool("HPHub").Spawn();
-        IngameView ingameView= (IngameView)ViewManager.instance.cur_view;
-        hub_trans.transform.SetParent(ingameView.parent_hub,false);
-        hp_hub= hub_trans.GetComponent<HPHub>();
+        IngameView ingameView = ViewManager.instance.cur_view as IngameView;
+        if (ingameView == null)
+        {
+            Debug.LogError("Current view is not IngameView");
+            return;
+        }
+        hub_trans.transform.SetParent(ingameView.parent_hub, false);
+        hp_hub = hub_trans.GetComponent<HPHub>();
+        if (hp_hub == null)
+        {
+            Debug.LogError("HPHub NULL");
+        }
         hp_hub.SetUp(anchor_hub, ingameView.parent_hub, Color.red);
 
     }
 
-    
+
     public virtual void OnDamage(int damage_u)
     {
         // chịu damage từ Unit

@@ -32,6 +32,8 @@ public class UnitControl : FSM_System
 
     private HPHub hpHub;
     public Transform anchorHub;
+
+    public bool isDead = false;
     // Start is called before the first frame update
     public virtual void Setup(UnitInitData unitInitData)
     {
