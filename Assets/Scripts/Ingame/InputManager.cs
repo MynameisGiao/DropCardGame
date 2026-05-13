@@ -6,18 +6,18 @@ using UnityEngine.EventSystems;
 public class InputManager : BYSingletonMono<InputManager>
 {
     public static Vector3 delta_mouse;
+    [SerializeField] private float mouseDragMultiplier = 2.5f;
+    [SerializeField] private float dragDeadZone = 1.5f;
+
     private Vector3 ogrinal;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
         delta_mouse = Vector3.zero;
-        if(!EventSystem.current.IsPointerOverGameObject())
+
+        bool isPointerOverUI = EventSystem.current != null && EventSystem.current.IsPointerOverGameObject();
+        if (!isPointerOverUI)
         {
             if (Input.GetMouseButtonDown(0)) // nhấn 
             {
@@ -25,7 +25,13 @@ public class InputManager : BYSingletonMono<InputManager>
             }
             else if (Input.GetMouseButton(0)) // nhấn -trượt - thả
             {
-                delta_mouse = Input.mousePosition - ogrinal;
+                delta_mouse = (Input.mousePosition - ogrinal) * mouseDragMultiplier;
+
+                if (delta_mouse.sqrMagnitude < dragDeadZone * dragDeadZone)
+                {
+                    delta_mouse = Vector3.zero;
+                }
+
                 ogrinal = Input.mousePosition;
             }
             else // thả
@@ -34,6 +40,6 @@ public class InputManager : BYSingletonMono<InputManager>
                 ogrinal = Vector3.zero;
             }
         }
-       
+
     }
 }

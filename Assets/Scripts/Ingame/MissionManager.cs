@@ -47,6 +47,7 @@ public class MissionManager : BYSingletonMono<MissionManager>
 
     private PlayerState lastState;
     private DifficultyAction lastAction;
+    private bool hasSelectedAction = false;
 
     // modifier
     private int bonusEnemy = 0;
@@ -69,25 +70,19 @@ public class MissionManager : BYSingletonMono<MissionManager>
     }
     IEnumerator CreateNewWave()
     {
+        if (isEndMission)
+        {
+            yield break;
+        }
+
         index_wave++;
 
         if (index_wave >= waves.Count)
-            if (index_wave >= waves.Count)
-            {
-                agent.Save();
+        {
+            EndMission(true);
+            yield break;
+        }
 
-                OnWaveChange.RemoveAllListeners();
-                OnBaseHpChange.RemoveAllListeners();
-                Debug.LogError("Mission complete");
-
-                BYPoolManager.instance.GetPool("HPHub").DeSpawnAll();
-
-                WinDialogParam param = new WinDialogParam();
-                param.cf_mission = cf_mission;
-                DialogManager.instance.ShowDialog(DialogIndex.WinDialog, param);
-
-                yield break;
-            }
         unitDeadCount = 0;
 
         ConfigWaveRecord cf_wave = ConfigManager.instance.configWave.GetRecordByKeySearch(waves[index_wave]);
@@ -120,6 +115,11 @@ public class MissionManager : BYSingletonMono<MissionManager>
         OnWaveChange?.Invoke(index_wave + 1, waves.Count);
 
         yield return new WaitForSeconds(cf_wave.Time_Delay);
+
+        if (isEndMission)
+        {
+            yield break;
+        }
 
         _playerPerformTracker.StartWave();
 
@@ -163,6 +163,11 @@ public class MissionManager : BYSingletonMono<MissionManager>
     {
         yield return new WaitForSeconds(delay);
 
+        if (isEndMission)
+        {
+            yield break;
+        }
+
         count_enemy_create++;
 
         ConfigEnemyRecord cf_enemy = ConfigManager.instance.configEnemy.GetRecordByKeySearch(id);
@@ -185,6 +190,11 @@ public class MissionManager : BYSingletonMono<MissionManager>
 
     public void EnemyDead(EnemyControl e)
     {
+        if (isEndMission)
+        {
+            return;
+        }
+
         number_enemy_dead++;
 
         if (count_enemy_create >= total_enemy && number_enemy_dead >= total_enemy)
@@ -210,6 +220,7 @@ public class MissionManager : BYSingletonMono<MissionManager>
 
                     lastState = currentState;
                     lastAction = action;
+                    hasSelectedAction = true;
 
                     Debug.Log($"[AI] State: {currentState} | Action: {action} | Reward: {reward}");
                     agent.LoadToSO(qTableSO);
@@ -222,10 +233,16 @@ public class MissionManager : BYSingletonMono<MissionManager>
 
     public void StartMission()
     {
+        isEndMission = false;
         index_wave = -1;
+        hp = max_hp;
+        unitDeadCount = 0;
         number_enemy_dead = 0;
         total_enemy = 0;
         count_enemy_create = 0;
+        lastState = default;
+        lastAction = DifficultyAction.Keep;
+        hasSelectedAction = false;
         StopAllCoroutines();
         StartCoroutine("Start");
     }
@@ -233,15 +250,62 @@ public class MissionManager : BYSingletonMono<MissionManager>
     // base chịu damageData từ enemy
     public void OnDamage(int damage)
     {
-        hp -= damage;
+        if (isEndMission)
+        {
+            return;
+        }
+
+        hp = Mathf.Max(0, hp - damage);
         OnBaseHpChange?.Invoke(hp, max_hp);
 
         if (hp <= 0)
         {
-            hp = 0;
-            agent.Save();
-            isEndMission = true;
+            EndMission(false);
         }
+    }
+
+    private void EndMission(bool isWin)
+    {
+        if (isEndMission)
+        {
+            return;
+        }
+
+        isEndMission = true;
+
+        if (!isWin && gameMode == GameMode.QLearning && hasSelectedAction)
+        {
+            var performance = _playerPerformTracker.EndWave(hp, max_hp, unitDeadCount);
+            PlayerState currentState = stateEvaluator.GetState(performance);
+            float reward = rewardCalculator.Calculate(performance);
+
+            agent.UpdateQ(lastState, lastAction, reward, currentState);
+            agent.LoadToSO(qTableSO);
+
+            Debug.Log($"[AI] Mission Fail | State: {currentState} | Action: {lastAction} | Reward: {reward}");
+        }
+
+        agent.Save();
+
+        StopAllCoroutines();
+
+        OnWaveChange.RemoveAllListeners();
+        OnBaseHpChange.RemoveAllListeners();
+
+        BYPoolManager.instance.GetPool("HPHub").DeSpawnAll();
+
+        if (isWin)
+        {
+            Debug.Log("Mission complete");
+
+            WinDialogParam param = new WinDialogParam();
+            param.cf_mission = cf_mission;
+            DialogManager.instance.ShowDialog(DialogIndex.WinDialog, param);
+            return;
+        }
+
+        Debug.Log("Mission failed");
+        DialogManager.instance.ShowDialog(DialogIndex.FailDialog);
     }
 
     public void OnCreateUnit(UnitData unitData, ConfigUnitRecord cf_unit, Vector3 posCreate)

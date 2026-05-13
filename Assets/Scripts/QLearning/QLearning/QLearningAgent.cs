@@ -5,8 +5,11 @@ public class QLearningAgent
 {
     private Dictionary<PlayerState, Dictionary<DifficultyAction, float>> qTable;
 
+    // Learning rate: hoc tu tu de Q-value on dinh, khong bi nhay manh sau 1 wave.
     public float alpha = 0.1f;
+    // Discount factor: uu tien trai nghiem dai han, khong chi reward cua wave hien tai.
     public float gamma = 0.9f;
+    // Exploration rate: 50% thu action moi de agent kham pha chien luoc tot hon khi dang hoc.
     public float epsilon = 0.5f;
 
     public QLearningAgent()
@@ -66,6 +69,16 @@ public class QLearningAgent
         float newQ = currentQ + alpha * (reward + gamma * maxNextQ - currentQ);
 
         qTable[state][action] = newQ;
+
+        // Q(s,a) = Q(s,a) + alpha * (reward + gamma * maxQ(s') - Q(s,a))
+        // state = s
+        // action = a
+        // currentQ = Q(s,a) hiện tại
+        // reward = phần thưởng vừa nhận
+        // nextState = s'
+        // maxNextQ = maxQ(s')
+        // alpha = learning rate
+        // gamma = discount factor
 
         Debug.Log($"Q[{state}][{action}] = {newQ}");
     }
