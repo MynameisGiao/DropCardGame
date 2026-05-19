@@ -5143,6 +5143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e2141c0283b28428c4e5e66a679b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseDragMultiplier: 2.5
+  dragDeadZone: 1.5
 --- !u!4 &520819106
 Transform:
   m_ObjectHideFlags: 0
@@ -10280,7 +10282,7 @@ MonoBehaviour:
   limit_left: {fileID: 817895920}
   limit_right: {fileID: 1395054680}
   trans_cam: {fileID: 1180510983}
-  sensity: 0.01
+  sensity: 0.2
   speed: 15
 --- !u!1001 &1266172378
 PrefabInstance:
@@ -13915,7 +13917,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   qTableSO: {fileID: 11400000, guid: 9c4bcecf7c16cb842883d012692f1fdf, type: 2}
-  gameMode: 1
+  gameMode: 0
   _playerPerformTracker: {fileID: 1373322450}
   cf_mission:
     id: 0

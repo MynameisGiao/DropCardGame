@@ -17,7 +17,7 @@ MonoBehaviour:
     stage: 1
     name: attack the citadel_1
     sceneName: Ingame_01
-    waves: 1;2;3
+    waves: 1;2;3;4;5
     reward_1: 200
     reward_2: 20
   - id: 2

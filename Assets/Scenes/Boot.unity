@@ -168,15 +168,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deck:
-  - id: 1
+  - id: 8
     level: 1
   - id: 2
     level: 1
-  - id: 3
-    level: 1
-  - id: 4
+  - id: 10
     level: 1
   - id: 5
+    level: 1
+  - id: 3
     level: 1
 --- !u!114 &31601942
 MonoBehaviour:

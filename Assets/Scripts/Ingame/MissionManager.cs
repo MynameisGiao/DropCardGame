@@ -203,7 +203,10 @@ public class MissionManager : BYSingletonMono<MissionManager>
             {
                 var performance = _playerPerformTracker.EndWave(hp, max_hp, unitDeadCount);
 
-                Debug.Log($"[Wave Done] HP: {performance.hpRemaining}, Time: {performance.clearTime}, Death: {performance.deathCount}");
+                Debug.Log(
+                    $"[RESULT] Mode: {gameMode} | Wave: {index_wave + 1} | " +
+                    $"HP: {performance.hpRemaining:F2} | Death: {performance.deathCount} | Time: {performance.clearTime:F2}"
+                );
 
                 // CHỈ CHẠY AI KHI QLearning
                 if (gameMode == GameMode.QLearning)
@@ -222,7 +225,11 @@ public class MissionManager : BYSingletonMono<MissionManager>
                     lastAction = action;
                     hasSelectedAction = true;
 
-                    Debug.Log($"[AI] State: {currentState} | Action: {action} | Reward: {reward}");
+                    Debug.Log(
+                        $"[AI RESULT] Wave: {index_wave + 1} | State: {currentState} | " +
+                        $"Action: {action} | Reward: {reward}"
+                    );
+
                     agent.LoadToSO(qTableSO);
                 }
             }
@@ -276,6 +283,10 @@ public class MissionManager : BYSingletonMono<MissionManager>
         if (!isWin && gameMode == GameMode.QLearning && hasSelectedAction)
         {
             var performance = _playerPerformTracker.EndWave(hp, max_hp, unitDeadCount);
+            Debug.Log(
+                $"[RESULT] Mode: {gameMode} | Wave: {index_wave + 1} | " +
+                $"HP: {performance.hpRemaining:F2} | Death: {performance.deathCount} | Time: {performance.clearTime:F2}"
+            );
             PlayerState currentState = stateEvaluator.GetState(performance);
             float reward = rewardCalculator.Calculate(performance);
 

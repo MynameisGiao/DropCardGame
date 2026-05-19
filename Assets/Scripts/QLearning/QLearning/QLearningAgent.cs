@@ -80,7 +80,7 @@ public class QLearningAgent
         // alpha = learning rate
         // gamma = discount factor
 
-        Debug.Log($"Q[{state}][{action}] = {newQ}");
+        Debug.Log($"[QTABLE] Q[{state}][{action}] = {newQ:F2}");
     }
 
     //  DEBUG
