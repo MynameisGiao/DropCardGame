@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 #if UNITY_EDITOR
@@ -205,7 +205,7 @@ public class MissionManager : BYSingletonMono<MissionManager>
 
                 Debug.Log(
                     $"[RESULT] Mode: {gameMode} | Wave: {index_wave + 1} | " +
-                    $"HP: {performance.hpRemaining:F2} | Death: {performance.deathCount} | Time: {performance.clearTime:F2}"
+                    $"HP: {performance.hpRemaining:F2} | UnitLoss: {performance.deathCount} | Time: {performance.clearTime:F2}"
                 );
 
                 // CHỈ CHẠY AI KHI QLearning
@@ -216,19 +216,31 @@ public class MissionManager : BYSingletonMono<MissionManager>
 
                     if (index_wave > 0)
                     {
+                        Debug.Log(
+                            $"[Q UPDATE INPUT] PrevState: {lastState} | PrevAction: {lastAction} | " +
+                            $"Reward: {reward} | CurrentState: {currentState}"
+                        );
+
                         agent.UpdateQ(lastState, lastAction, reward, currentState);
+                    }
+                    else
+                    {
+                        Debug.Log(
+                            $"[FIRST WAVE] State: {currentState} | Reward: {reward} | " +
+                            $"No Q update because there is no previous state/action"
+                        );
                     }
 
                     DifficultyAction action = agent.GetAction(currentState);
 
+                    Debug.Log(
+                        $"[NEXT ACTION] Wave: {index_wave + 1} | CurrentState: {currentState} | " +
+                        $"NextAction: {action}"
+                    );
+
                     lastState = currentState;
                     lastAction = action;
                     hasSelectedAction = true;
-
-                    Debug.Log(
-                        $"[AI RESULT] Wave: {index_wave + 1} | State: {currentState} | " +
-                        $"Action: {action} | Reward: {reward}"
-                    );
 
                     agent.LoadToSO(qTableSO);
                 }
@@ -237,7 +249,6 @@ public class MissionManager : BYSingletonMono<MissionManager>
             StartCoroutine(CreateNewWave());
         }
     }
-
     public void StartMission()
     {
         isEndMission = false;
@@ -293,7 +304,9 @@ public class MissionManager : BYSingletonMono<MissionManager>
             agent.UpdateQ(lastState, lastAction, reward, currentState);
             agent.LoadToSO(qTableSO);
 
-            Debug.Log($"[AI] Mission Fail | State: {currentState} | Action: {lastAction} | Reward: {reward}");
+            Debug.Log(
+                $"[MISSION FAIL] PrevState: {lastState} | PrevAction: {lastAction} | Reward: {reward}"
+            );
         }
 
         agent.Save();
