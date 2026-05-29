@@ -122,7 +122,8 @@ public class QLearningAgent
     {
         if (!PlayerPrefs.HasKey("QTABLE"))
         {
-            Debug.Log("[AI] No saved Q-table");
+            Save();
+            Debug.Log("[AI] No saved Q-table, created default Q-table");
             return;
         }
 
